@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--SplashView-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController title="SplashView" id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppLogo" translatesAutoresizingMaskIntoConstraints="NO" id="xvJ-X8-fXi">
+                                <rect key="frame" x="107" y="244" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="4O1-xD-vff"/>
+                                    <constraint firstAttribute="height" constant="200" id="q7R-9Y-7yp"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MyLogo" translatesAutoresizingMaskIntoConstraints="NO" id="RVz-Js-FfE">
+                                <rect key="frame" x="157" y="754" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="3P8-RQ-qGh"/>
+                                    <constraint firstAttribute="width" constant="100" id="esR-it-uFa"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powed By" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eur-5i-JiL">
+                                <rect key="frame" x="183.5" y="770" width="47.5" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project Planer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UHp-JF-gVN">
+                                <rect key="frame" x="151" y="454" width="112" height="20.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="RVz-Js-FfE" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="CbB-Yf-Ke9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="RVz-Js-FfE" secondAttribute="bottom" constant="8" id="GJv-i7-9Ge"/>
+                            <constraint firstItem="xvJ-X8-fXi" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Oqv-QO-SfW"/>
+                            <constraint firstItem="UHp-JF-gVN" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Wtv-1c-k9v"/>
+                            <constraint firstItem="UHp-JF-gVN" firstAttribute="top" secondItem="xvJ-X8-fXi" secondAttribute="bottom" constant="10" id="Ypn-oo-Y7T"/>
+                            <constraint firstItem="xvJ-X8-fXi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="200" id="jse-8n-uIL"/>
+                            <constraint firstItem="eur-5i-JiL" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="sJK-cK-htn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eur-5i-JiL" secondAttribute="bottom" constant="80" id="svD-If-vKU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="u1R-L3-NDv"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="252.17391304347828" y="407.8125"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="AppLogo" width="256" height="256"/>
+        <image name="MyLogo" width="160" height="54"/>
+    </resources>
+</document>
