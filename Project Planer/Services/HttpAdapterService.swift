@@ -41,7 +41,7 @@ class HttpAdapterService {
                     }
                 }
             }else {
-                print("Error : \(error?.localizedDescription)")
+                print("Error : \(error?.localizedDescription as Optional)")
             }
         }
         dataTask.resume()

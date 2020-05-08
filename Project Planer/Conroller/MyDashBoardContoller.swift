@@ -14,16 +14,16 @@ class MyDashBoardContoller : UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let cur = GitHubServices(UserName: "sriThariduSangeeth")
-        if CheckInternetConnection.connection(){
-            cur.getReposList{(result) in
-                if let coun = result{
-                    for con in coun {
-                        print(con.getRepoId()," and " ,con.getRepoName())
-                    }
-                }
-            }
-        }
+//        let cur = GitHubServices(UserName: "sriThariduSangeeth")
+//        if CheckInternetConnection.connection(){
+//            cur.getReposList{(result) in
+//                if let coun = result{
+//                    for con in coun {
+//                        print(con.getRepoId()," and " ,con.getRepoName())
+//                    }
+//                }
+//            }
+//        }
 
         
     }

@@ -34,7 +34,7 @@ class GitHubServices{
                         for cu in repo {
                             
                             let obj = cu as? [String:Any]
-                            repoList += [Repository(id: (obj?["id"] as? Int)! , name: (obj?["name"] as? String)!)]
+                            repoList += [Repository(id: (obj?["id"] as? Int)! , name: (obj?["name"] as? String)! , date: (obj?["created_at"] as? String)!)]
                         }
                                       
                         compltion(repoList)

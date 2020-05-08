@@ -11,12 +11,14 @@ class Repository{
     
     let repoId: Int
     let repoName: String
+    let repoDate : String
     
     
 
-    init(id : Int , name : String) {
+    init(id : Int , name : String , date:String) {
         self.repoId = id
         self.repoName = name
+        self.repoDate = date
     }
     
     
@@ -26,5 +28,9 @@ class Repository{
     
     func getRepoName() -> String {
         return self.repoName
+    }
+    
+    func getRepoDate() -> String {
+        return self.repoDate
     }
 }

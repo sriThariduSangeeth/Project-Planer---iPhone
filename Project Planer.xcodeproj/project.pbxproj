@@ -26,6 +26,9 @@
 		2751BA362463FED5005327BF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751BA352463FED5005327BF /* Constants.swift */; };
 		2751BA39246400F2005327BF /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751BA38246400F2005327BF /* Repository.swift */; };
 		2751BA3B246423B9005327BF /* GitCMServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751BA3A246423B9005327BF /* GitCMServices.swift */; };
+		2751BA3D24649187005327BF /* ProjectViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751BA3C24649187005327BF /* ProjectViewCell.swift */; };
+		2751BA3F2464970E005327BF /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751BA3E2464970E005327BF /* Project.swift */; };
+		2751BA4124649E45005327BF /* UITableView+EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751BA4024649E45005327BF /* UITableView+EmptyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +53,9 @@
 		2751BA352463FED5005327BF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2751BA38246400F2005327BF /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		2751BA3A246423B9005327BF /* GitCMServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCMServices.swift; sourceTree = "<group>"; };
+		2751BA3C24649187005327BF /* ProjectViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewCell.swift; sourceTree = "<group>"; };
+		2751BA3E2464970E005327BF /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		2751BA4024649E45005327BF /* UITableView+EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+EmptyView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				2751BA2C2463D647005327BF /* UIView+HideKeyBoard.swift */,
+				2751BA4024649E45005327BF /* UITableView+EmptyView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -150,6 +157,8 @@
 			isa = PBXGroup;
 			children = (
 				2751BA38246400F2005327BF /* Repository.swift */,
+				2751BA3C24649187005327BF /* ProjectViewCell.swift */,
+				2751BA3E2464970E005327BF /* Project.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -228,7 +237,9 @@
 			files = (
 				2751BA322463FD50005327BF /* CheckInternetConnection.swift in Sources */,
 				2751BA232463A75C005327BF /* MyDashBoardContoller.swift in Sources */,
+				2751BA3D24649187005327BF /* ProjectViewCell.swift in Sources */,
 				2751BA2D2463D647005327BF /* UIView+HideKeyBoard.swift in Sources */,
+				2751BA4124649E45005327BF /* UITableView+EmptyView.swift in Sources */,
 				2751BA212463A6CD005327BF /* TabViewController.swift in Sources */,
 				2751BA302463FC97005327BF /* HttpAdapterService.swift in Sources */,
 				2751BA3B246423B9005327BF /* GitCMServices.swift in Sources */,
@@ -239,6 +250,7 @@
 				2751BA0324639D2F005327BF /* AppDelegate.swift in Sources */,
 				2751BA292463C273005327BF /* LoginViewController.swift in Sources */,
 				2751BA1D2463A371005327BF /* SplashView.swift in Sources */,
+				2751BA3F2464970E005327BF /* Project.swift in Sources */,
 				2751BA272463A84A005327BF /* SettingViewController.swift in Sources */,
 				2751BA252463A7CB005327BF /* ProjectViewContoller.swift in Sources */,
 			);
