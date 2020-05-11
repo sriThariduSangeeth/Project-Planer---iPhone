@@ -80,9 +80,9 @@
                                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
-                                                    <outlet property="repoDate" destination="WT4-1u-dcs" id="qZX-jv-Oa3"/>
-                                                    <outlet property="repoName" destination="qU9-eg-d5u" id="ymf-VK-QVb"/>
-                                                    <outlet property="taskCount" destination="991-xa-yBJ" id="FAh-0w-N0F"/>
+                                                    <outlet property="repoDate" destination="WT4-1u-dcs" id="2Qa-Hz-bgN"/>
+                                                    <outlet property="repoName" destination="qU9-eg-d5u" id="eih-pz-vD7"/>
+                                                    <outlet property="taskCount" destination="991-xa-yBJ" id="4XS-SB-Pap"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -136,7 +136,121 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7lJ-gZ-EfW">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Technical Defects Count" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Spe-FX-v7n" userLabel="count">
+                                        <rect key="frame" x="107.5" y="100" width="199" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gmz-aQ-Fwf" userLabel="countNum">
+                                        <rect key="frame" x="183" y="210.5" width="48" height="120"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="100"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8sX-zT-TEd" userLabel="DefectsView">
+                                        <rect key="frame" x="5" y="360.5" width="404" height="359.5"/>
+                                        <subviews>
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bub-Jy-SMQ">
+                                                <rect key="frame" x="0.0" y="0.0" width="404" height="359.5"/>
+                                                <subviews>
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="150" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nlL-5U-TJL">
+                                                        <rect key="frame" x="0.0" y="0.0" width="404" height="360"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <prototypes>
+                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="dCell" rowHeight="135" id="C3u-tT-4xn" customClass="DefectViewCell" customModule="Project_Planer" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="28" width="404" height="135"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="C3u-tT-4xn" id="1wg-e3-9sJ" customClass="Defe">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="404" height="135"/>
+                                                                    <autoresizingMask key="autoresizingMask"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="repoName" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XwK-Cn-B9g">
+                                                                            <rect key="frame" x="25" y="16" width="80" height="20.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="commitMassage" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zlF-3O-cBg">
+                                                                            <rect key="frame" x="25" y="41.5" width="250" height="30"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="30" id="9IX-Qa-mm9"/>
+                                                                                <constraint firstAttribute="width" constant="250" id="EEq-Ll-UKo"/>
+                                                                            </constraints>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="defect" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbb-2d-9Q0">
+                                                                            <rect key="frame" x="25" y="76.5" width="200" height="50"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="200" id="gra-Z9-1qL"/>
+                                                                                <constraint firstAttribute="height" constant="50" id="yzC-D4-QQV"/>
+                                                                            </constraints>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstItem="dbb-2d-9Q0" firstAttribute="top" secondItem="zlF-3O-cBg" secondAttribute="bottom" constant="5" id="CiY-ZB-qsM"/>
+                                                                        <constraint firstItem="zlF-3O-cBg" firstAttribute="top" secondItem="XwK-Cn-B9g" secondAttribute="bottom" constant="5" id="LtM-90-JC2"/>
+                                                                        <constraint firstItem="dbb-2d-9Q0" firstAttribute="leading" secondItem="1wg-e3-9sJ" secondAttribute="leadingMargin" constant="5" id="NEJ-sC-Hjm"/>
+                                                                        <constraint firstItem="XwK-Cn-B9g" firstAttribute="top" secondItem="1wg-e3-9sJ" secondAttribute="topMargin" constant="5" id="US5-Gl-FXO"/>
+                                                                        <constraint firstItem="XwK-Cn-B9g" firstAttribute="leading" secondItem="1wg-e3-9sJ" secondAttribute="leadingMargin" constant="5" id="pxc-jy-NSg"/>
+                                                                        <constraint firstItem="zlF-3O-cBg" firstAttribute="leading" secondItem="1wg-e3-9sJ" secondAttribute="leadingMargin" constant="5" id="xQ0-p8-dys"/>
+                                                                    </constraints>
+                                                                </tableViewCellContentView>
+                                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <connections>
+                                                                    <outlet property="commitM" destination="zlF-3O-cBg" id="yf1-qb-WIk"/>
+                                                                    <outlet property="defect" destination="dbb-2d-9Q0" id="zTz-AL-TOV"/>
+                                                                    <outlet property="repo" destination="XwK-Cn-B9g" id="K0m-Xq-TGy"/>
+                                                                </connections>
+                                                            </tableViewCell>
+                                                        </prototypes>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="JTo-8b-PMB" id="fcl-jk-zgp"/>
+                                                            <outlet property="delegate" destination="JTo-8b-PMB" id="K2r-Tb-r7k"/>
+                                                        </connections>
+                                                    </tableView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="nlL-5U-TJL" firstAttribute="leading" secondItem="bub-Jy-SMQ" secondAttribute="leading" id="17j-Xg-jgy"/>
+                                                    <constraint firstAttribute="trailing" secondItem="nlL-5U-TJL" secondAttribute="trailing" id="Jsr-Qy-DRS"/>
+                                                    <constraint firstAttribute="bottom" secondItem="nlL-5U-TJL" secondAttribute="bottom" id="YdA-Dg-38r"/>
+                                                    <constraint firstItem="nlL-5U-TJL" firstAttribute="top" secondItem="bub-Jy-SMQ" secondAttribute="top" id="d30-LP-h4p"/>
+                                                    <constraint firstItem="nlL-5U-TJL" firstAttribute="centerX" secondItem="bub-Jy-SMQ" secondAttribute="centerX" id="sdN-MP-mak"/>
+                                                </constraints>
+                                            </scrollView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="bub-Jy-SMQ" firstAttribute="top" secondItem="8sX-zT-TEd" secondAttribute="top" id="2aU-gN-5MJ"/>
+                                            <constraint firstAttribute="bottom" secondItem="bub-Jy-SMQ" secondAttribute="bottom" id="2wU-QR-Ia4"/>
+                                            <constraint firstItem="nlL-5U-TJL" firstAttribute="height" secondItem="8sX-zT-TEd" secondAttribute="height" multiplier="1.00139" id="3RF-3R-6b7"/>
+                                            <constraint firstItem="bub-Jy-SMQ" firstAttribute="leading" secondItem="8sX-zT-TEd" secondAttribute="leading" id="77o-Xr-PoM"/>
+                                            <constraint firstItem="nlL-5U-TJL" firstAttribute="width" secondItem="8sX-zT-TEd" secondAttribute="width" id="7IC-Sp-zZs"/>
+                                            <constraint firstItem="bub-Jy-SMQ" firstAttribute="width" secondItem="8sX-zT-TEd" secondAttribute="width" id="BeG-CZ-FDS"/>
+                                            <constraint firstItem="bub-Jy-SMQ" firstAttribute="centerX" secondItem="8sX-zT-TEd" secondAttribute="centerX" id="Z95-Fs-gOq"/>
+                                            <constraint firstItem="bub-Jy-SMQ" firstAttribute="height" secondItem="8sX-zT-TEd" secondAttribute="height" id="aCA-EU-34u"/>
+                                            <constraint firstAttribute="trailing" secondItem="bub-Jy-SMQ" secondAttribute="trailing" id="sbs-sx-Enr"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Spe-FX-v7n" firstAttribute="top" secondItem="7lJ-gZ-EfW" secondAttribute="top" constant="100" id="HwT-8W-8Eq"/>
+                                    <constraint firstAttribute="trailing" secondItem="8sX-zT-TEd" secondAttribute="trailing" constant="5" id="Iia-67-fVQ"/>
+                                    <constraint firstItem="Gmz-aQ-Fwf" firstAttribute="centerX" secondItem="7lJ-gZ-EfW" secondAttribute="centerX" id="JC1-dU-xb3"/>
+                                    <constraint firstItem="8sX-zT-TEd" firstAttribute="centerX" secondItem="7lJ-gZ-EfW" secondAttribute="centerX" id="KWz-O8-gf7"/>
+                                    <constraint firstItem="Gmz-aQ-Fwf" firstAttribute="top" secondItem="Spe-FX-v7n" secondAttribute="bottom" constant="90" id="MHO-Gi-O6j"/>
+                                    <constraint firstItem="8sX-zT-TEd" firstAttribute="top" secondItem="Gmz-aQ-Fwf" secondAttribute="bottom" constant="30" id="Nr6-Dt-eq4"/>
+                                    <constraint firstItem="Spe-FX-v7n" firstAttribute="centerX" secondItem="7lJ-gZ-EfW" secondAttribute="centerX" id="Nse-ef-JK2"/>
+                                    <constraint firstAttribute="bottom" secondItem="8sX-zT-TEd" secondAttribute="bottom" constant="5" id="fNl-0u-fzq"/>
+                                    <constraint firstItem="8sX-zT-TEd" firstAttribute="leading" secondItem="7lJ-gZ-EfW" secondAttribute="leading" constant="5" id="m4L-c4-7nq"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -151,6 +265,10 @@
                         <viewLayoutGuide key="safeArea" id="zIS-7v-6YW"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Dashboard" id="xpp-qU-izH"/>
+                    <connections>
+                        <outlet property="defCount" destination="Gmz-aQ-Fwf" id="4X0-yS-n8c"/>
+                        <outlet property="tableView" destination="nlL-5U-TJL" id="Ghb-FC-iN3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rVU-LE-Ppp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -313,7 +431,7 @@
                                                 </constraints>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" textContentType="password"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lwi-P6-jVe">
                                                 <rect key="frame" x="170" y="200" width="74" height="30"/>

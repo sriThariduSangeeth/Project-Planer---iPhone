@@ -20,6 +20,7 @@ class LoginViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.password.isSecureTextEntry = true;
         self.hideKeyboardWhenTappedAround()
         
     
@@ -33,7 +34,13 @@ class LoginViewController: UIViewController{
     
     
     @IBAction func loginAction(_ sender: Any) {
-        navigateInsideToDashboard()
+        if(userName.text == "sriThariduSangeeth"){
+            navigateInsideToDashboard()
+        }else{
+            let alert = UIAlertController(title: "Invalid", message: "Invalid User name and Password", preferredStyle: UIAlertController.Style.alert)
+                      alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     

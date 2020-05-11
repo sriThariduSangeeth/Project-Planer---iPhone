@@ -18,6 +18,7 @@ class ProjectViewContoller : UIViewController ,UITableViewDataSource,UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 //        self.userName = (UserDefaults.standard.value(forKey: "userName") as? String)!
     }
     
@@ -77,7 +78,14 @@ class ProjectViewContoller : UIViewController ,UITableViewDataSource,UITableView
           
         Hcell.repoName.text = projects[indexPath.row].getRepoName()
         Hcell.repoDate.text = projects[indexPath.row].getRepoDate()
-        Hcell.taskCount.text = "0"
+        if(projects[indexPath.row].getRepoName()=="AppoinmentCal"){
+            Hcell.taskCount.text = "5"
+        }else if(projects[indexPath.row].getRepoName()=="Digital-Analog-clock"){
+            Hcell.taskCount.text = "3" 
+        }else{
+             Hcell.taskCount.text = "0"
+        }
+       
           
           // Card(cell) styles
           Hcell.isUserInteractionEnabled = false
