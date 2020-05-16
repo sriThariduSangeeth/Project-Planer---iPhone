@@ -10,4 +10,14 @@ import UIKit
 
 class AssessmentTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var priorityIcon: UIImageView!
+    @IBOutlet weak var assessNameLab: UILabel!
+    @IBOutlet weak var dueDateLab: UILabel!
+    @IBOutlet weak var marks: UILabel!
+    
+    
+    
+    @IBAction func viewNoteAssess(_ sender: Any) {
+    }
+    
 }

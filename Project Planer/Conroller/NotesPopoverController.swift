@@ -11,7 +11,8 @@ import UIKit
 
 class NotesPopoverController: UIViewController {
 
-    @IBOutlet weak var notesTextView: UITextView!
+
+    @IBOutlet weak var notesView: UITextView!
     
 var notes: String? {
         didSet {
@@ -27,8 +28,8 @@ var notes: String? {
     
     func configureView() {
         if let notes = notes {
-            if let notesTextView = notesTextView {
-                notesTextView.text = notes
+            if let notesView = notesView {
+                notesView.text = notes
             }
         }
     }

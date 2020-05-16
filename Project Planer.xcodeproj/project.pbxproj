@@ -44,6 +44,7 @@
 		27E1414A246FE8EA0009C792 /* NotesPopoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E14149246FE8EA0009C792 /* NotesPopoverController.swift */; };
 		27E1414C246FEE1D0009C792 /* TaskAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E1414B246FEE1D0009C792 /* TaskAddViewController.swift */; };
 		27E1414E24700DF40009C792 /* AssessmentAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E1414D24700DF40009C792 /* AssessmentAddViewController.swift */; };
+		27E141502470455B0009C792 /* LinearProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E1414F2470455B0009C792 /* LinearProgressBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		27E14149246FE8EA0009C792 /* NotesPopoverController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesPopoverController.swift; sourceTree = "<group>"; };
 		27E1414B246FEE1D0009C792 /* TaskAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskAddViewController.swift; sourceTree = "<group>"; };
 		27E1414D24700DF40009C792 /* AssessmentAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentAddViewController.swift; sourceTree = "<group>"; };
+		27E1414F2470455B0009C792 /* LinearProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearProgressBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 				2751BA2B2463D629005327BF /* Extensions */,
 				2751BA352463FED5005327BF /* Constants.swift */,
 				27E1413D246F2F500009C792 /* CircularProgressBar.swift */,
+				27E1414F2470455B0009C792 /* LinearProgressBar.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				2751BA4124649E45005327BF /* UITableView+EmptyView.swift in Sources */,
 				27E14140246F4D4A0009C792 /* MasterViewController.swift in Sources */,
 				27BAA034246921FD00156592 /* DefectViewCell.swift in Sources */,
+				27E141502470455B0009C792 /* LinearProgressBar.swift in Sources */,
 				27E1413E246F2F500009C792 /* CircularProgressBar.swift in Sources */,
 				2751BA212463A6CD005327BF /* TabViewController.swift in Sources */,
 				27BAA032246912B300156592 /* ProjectViewCell.swift in Sources */,

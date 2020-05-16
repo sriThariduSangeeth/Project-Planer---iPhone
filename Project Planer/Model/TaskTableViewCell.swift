@@ -6,4 +6,28 @@
 //  Copyright © 2020 Dilan Tharidu Sangeeth. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class TaskTableViewCell: UITableViewCell {
+    
+    
+    @IBOutlet weak var taskNumLab: UILabel!
+    @IBOutlet weak var taskNameLab: UILabel!
+    @IBOutlet weak var dueDateLab: UILabel!
+    @IBOutlet weak var dayLeftLab: UILabel!
+    @IBOutlet weak var dayRemaingProBar: LinearProgressBar!
+    @IBOutlet weak var taskProBar: CircularProgressBar!
+    
+    
+    
+    
+    
+    @IBAction func viewTaskNoteClick(_ sender: Any) {
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8))
+    }
+    
+}
