@@ -10,6 +10,10 @@ import UIKit
 
 extension UITableView {
     
+    func hasRowAtIndexPath(indexPath: NSIndexPath) -> Bool {
+           return indexPath.section < self.numberOfSections && indexPath.row < self.numberOfRows(inSection: indexPath.section)
+       }
+    
     func triggerEmptyMessage( _ message: String) {
          let messageBacground = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
          messageBacground.text = message

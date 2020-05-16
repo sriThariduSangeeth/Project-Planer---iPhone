@@ -13,11 +13,9 @@ class SplashView: UIViewController{
     let logoImage = UIImageView(image: UIImage(named: "AppLogo")!)
     let splashView = UIView()
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
         splashView.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0)
         view.addSubview(splashView)
         splashView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
@@ -63,14 +61,17 @@ class SplashView: UIViewController{
     
     func removeSplashScreen() {
         splashView.removeFromSuperview()
+//        self.window = UIWindow(frame: UIScreen.main.bounds)
         
         DispatchQueue.main.async {
-            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-            guard let vc = storyboard.instantiateViewController(withIdentifier: "mainStoryB") as? LoginViewController else {
+            let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
+            guard let vc = storyboard.instantiateViewController(withIdentifier: "loginStory") as? LoginViewController else {
                 print("Could not find view controller")
                 return
             }
             
+//            self.window?.rootViewController = vc
+//            self.window?.makeKeyAndVisible()
             self.present(vc, animated: true, completion: nil)
         }
     }

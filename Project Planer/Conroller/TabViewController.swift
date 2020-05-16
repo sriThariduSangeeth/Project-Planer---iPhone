@@ -23,14 +23,16 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
         
     }
     
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect_viewController: UIViewController) {
         
-        if viewController is MyDashBoardContoller {
+        if didSelect_viewController is MyDashBoardContoller {
             print("Dashborad tab")
-        } else if viewController is ProjectViewContoller {
+        } else if didSelect_viewController is ProjectViewContoller {
             print("Project tab")
-        } else if viewController is SettingViewController {
+        } else if didSelect_viewController is DetailViewController {
             print("settings tab")
+            
         }
     }
 }

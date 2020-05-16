@@ -10,6 +10,8 @@ import UIKit
 
 class LoginViewController: UIViewController{
     
+    var window: UIWindow?
+
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var userName: UITextField!
@@ -18,8 +20,13 @@ class LoginViewController: UIViewController{
     
     @IBOutlet weak var logInBut: UIButton!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
         self.password.isSecureTextEntry = true;
         self.hideKeyboardWhenTappedAround()
         
@@ -34,7 +41,7 @@ class LoginViewController: UIViewController{
     
     
     @IBAction func loginAction(_ sender: Any) {
-        if(userName.text == "sriThariduSangeeth"){
+        if(userName.text == ""){
             navigateInsideToDashboard()
         }else{
             let alert = UIAlertController(title: "Invalid", message: "Invalid User name and Password", preferredStyle: UIAlertController.Style.alert)
@@ -45,16 +52,25 @@ class LoginViewController: UIViewController{
     
     
     func navigateInsideToDashboard (){
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        guard let vc = storyboard.instantiateViewController(withIdentifier: "mainStory") as? TabViewController else {
-            print("Could not find view controller")
-            return
+     
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+
+            DispatchQueue.main.async {
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            guard let vc = storyboard.instantiateViewController(withIdentifier: "mainStory") as? TabViewController else {
+                print("Could not find view controller")
+                return
+            }
+
+            UserDefaults.standard.set(self.userName.text, forKey: "userName")
+            UserDefaults.standard.set(self.password.text, forKey: "pass")
+
+                self.window?.rootViewController = vc
+                self.window?.makeKeyAndVisible()
+//            self.present(vc, animated: true, completion: nil)
+
         }
-        
-        UserDefaults.standard.set(userName.text, forKey: "userName")
-        UserDefaults.standard.set(password.text, forKey: "pass")
-       
-        self.present(vc, animated: true, completion: nil)
+                
     }
     
 }

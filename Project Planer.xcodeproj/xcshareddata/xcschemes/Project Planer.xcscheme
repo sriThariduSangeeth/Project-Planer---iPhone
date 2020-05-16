@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2751B9FE24639D2F005327BF"
-               BuildableName = "Project Planer.app"
+               BuildableName = "Assessment Planer.app"
                BlueprintName = "Project Planer"
                ReferencedContainer = "container:Project Planer.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2751B9FE24639D2F005327BF"
-            BuildableName = "Project Planer.app"
+            BuildableName = "Assessment Planer.app"
             BlueprintName = "Project Planer"
             ReferencedContainer = "container:Project Planer.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2751B9FE24639D2F005327BF"
-            BuildableName = "Project Planer.app"
+            BuildableName = "Assessment Planer.app"
             BlueprintName = "Project Planer"
             ReferencedContainer = "container:Project Planer.xcodeproj">
          </BuildableReference>

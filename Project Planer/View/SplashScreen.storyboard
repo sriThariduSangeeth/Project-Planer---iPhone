@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2am-9K-AGk">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="ipad11_0rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
@@ -13,11 +13,11 @@
             <objects>
                 <viewController id="2am-9K-AGk" customClass="SplashView" customModule="Project_Planer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pmv-dh-xmy">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="1194"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MyLogo" translatesAutoresizingMaskIntoConstraints="NO" id="b4V-fW-g1B">
-                                <rect key="frame" x="157" y="752" width="100" height="100"/>
+                                <rect key="frame" x="367" y="1044" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="Fxc-0b-S1K"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="We9-Gr-WO1"/>
@@ -26,13 +26,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powed By" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ez-Df-7jR">
-                                <rect key="frame" x="183.5" y="770" width="47.5" height="12"/>
+                                <rect key="frame" x="393.5" y="1062" width="47.5" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppLogo" translatesAutoresizingMaskIntoConstraints="NO" id="mFA-Cx-AQE">
-                                <rect key="frame" x="107" y="348" width="200" height="200"/>
+                                <rect key="frame" x="317" y="497" width="200" height="200"/>
                                 <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="A9F-RZ-ZkO"/>
@@ -40,7 +40,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project Planer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UqF-gd-h4U">
-                                <rect key="frame" x="151" y="558" width="112" height="20.5"/>
+                                <rect key="frame" x="361" y="707" width="112" height="20.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -48,8 +48,8 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="x7c-uJ-dpv" firstAttribute="bottom" secondItem="b4V-fW-g1B" secondAttribute="bottom" constant="10" id="0D0-mV-qxa"/>
-                            <constraint firstItem="x7c-uJ-dpv" firstAttribute="bottom" secondItem="6Ez-Df-7jR" secondAttribute="bottom" constant="80" id="8ro-dg-htI"/>
+                            <constraint firstItem="x7c-uJ-dpv" firstAttribute="bottom" secondItem="b4V-fW-g1B" secondAttribute="bottom" constant="30" id="0D0-mV-qxa"/>
+                            <constraint firstItem="x7c-uJ-dpv" firstAttribute="bottom" secondItem="6Ez-Df-7jR" secondAttribute="bottom" constant="100" id="8ro-dg-htI"/>
                             <constraint firstItem="mFA-Cx-AQE" firstAttribute="centerY" secondItem="pmv-dh-xmy" secondAttribute="centerY" id="Du1-mS-f7d"/>
                             <constraint firstItem="UqF-gd-h4U" firstAttribute="top" secondItem="mFA-Cx-AQE" secondAttribute="bottom" constant="10" id="JqZ-mX-hVZ"/>
                             <constraint firstItem="b4V-fW-g1B" firstAttribute="centerX" secondItem="pmv-dh-xmy" secondAttribute="centerX" id="OBZ-OZ-U1d"/>
