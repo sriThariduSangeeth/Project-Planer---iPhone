@@ -13,11 +13,13 @@ class Defects{
     let repo: String
     let commit: String
     let defect: String
+    let className :String
     
-    init(repo: String, commit: String, defect: String) {
+    init(repo: String, commit: String, defect: String , className :String) {
         self.repo = repo
         self.commit = commit
         self.defect = defect
+        self.className = className
     }
     
     func getRepoName() -> String {
@@ -26,9 +28,12 @@ class Defects{
     
     func getCommitMessage() -> String {
           return commit
-      }
+    }
     func getdefect() -> String {
           return defect
-      }
+    }
+    func getClassName() -> String {
+        return className
+    }
     
 }

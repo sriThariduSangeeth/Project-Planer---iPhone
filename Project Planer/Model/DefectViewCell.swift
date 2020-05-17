@@ -14,6 +14,8 @@ class DefectViewCell: UITableViewCell {
     @IBOutlet weak var commitM: UILabel!
     
     @IBOutlet weak var defect: UILabel!
+
+    @IBOutlet weak var className: UILabel!
     
     override func layoutSubviews() {
              super.layoutSubviews()

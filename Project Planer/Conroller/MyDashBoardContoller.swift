@@ -16,26 +16,46 @@ class MyDashBoardContoller : UIViewController ,UITableViewDataSource,UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getDefectsList()
+        getDefectsList1()
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
-       
+       getDefectsList()
         
     }
     
-    func getDefectsList() {
+    func getDefectsList1() {
            
-        let s1 = Defects(repo: "TestAndroid", commit: "Create SetValue and set Arry", defect: "ArrayIndexOutOfBoundsException")
-        let s2 = Defects(repo: "TestAndroid", commit: "create Application add simple operation", defect: "ArithmeticException")
+        let s1 = Defects(repo: "TestAndroid", commit: "Create SetValue and set Arry", defect: "ArrayIndexOutOfBoundsException" , className :"test.java")
+        let s2 = Defects(repo: "TestAndroid", commit: "create Application add simple operation", defect: "ArithmeticException" , className :"test.java")
         defects += [s1,s2]
         self.defCount.text = String(defects.count)
         
         self.tableView.reloadData()
-       }
+    }
+    
+    func getDefectsList() {
+        defects = []
+        let cur = GitCMServices(UserName: "sriThariduSangeeth" )
+        if CheckInternetConnection.connection(){
+            cur.getDefectsList{(result) in
+                if let coun = result{
+                   DispatchQueue.main.async {
+                        self.defects = coun
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+
+            print(self.defects.count)
+        }
+        
+    }
+    
+      // MARK: - Table View
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
             return 1
@@ -57,6 +77,8 @@ class MyDashBoardContoller : UIViewController ,UITableViewDataSource,UITableView
         Dcell.repo.text = defects[indexPath.row].getRepoName()
         Dcell.commitM.text = defects[indexPath.row].getCommitMessage()
         Dcell.defect.text = defects[indexPath.row].getdefect()
+        Dcell.className.text = defects[indexPath.row].getClassName()
+        
      
     
        

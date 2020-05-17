@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Assessment" representedClassName="Assessment" syncable="YES" codeGenerationType="class">
+    <entity name="Assessment" representedClassName=".Assessment" syncable="YES">
         <attribute name="addToCalendar" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="calendarIdentifier" optional="YES" attributeType="String"/>
         <attribute name="dueDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>

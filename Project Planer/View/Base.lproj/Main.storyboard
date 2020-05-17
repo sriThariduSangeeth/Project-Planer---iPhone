@@ -169,13 +169,13 @@
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="repoName" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XwK-Cn-B9g">
-                                                                            <rect key="frame" x="20" y="16" width="80" height="20.5"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <rect key="frame" x="20" y="16" width="116.5" height="27.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="23"/>
                                                                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="commitMassage" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zlF-3O-cBg">
-                                                                            <rect key="frame" x="20" y="41.5" width="250" height="30"/>
+                                                                            <rect key="frame" x="20" y="48.5" width="250" height="30"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="30" id="9IX-Qa-mm9"/>
                                                                                 <constraint firstAttribute="width" constant="250" id="EEq-Ll-UKo"/>
@@ -185,7 +185,7 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="defect" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbb-2d-9Q0">
-                                                                            <rect key="frame" x="20" y="76.5" width="200" height="50"/>
+                                                                            <rect key="frame" x="20" y="83.5" width="200" height="50"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="200" id="gra-Z9-1qL"/>
                                                                                 <constraint firstAttribute="height" constant="50" id="yzC-D4-QQV"/>
@@ -194,18 +194,27 @@
                                                                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="class name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43V-ch-hBD">
+                                                                            <rect key="frame" x="703" y="21" width="96" height="23"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                                            <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
                                                                     </subviews>
                                                                     <constraints>
                                                                         <constraint firstItem="dbb-2d-9Q0" firstAttribute="top" secondItem="zlF-3O-cBg" secondAttribute="bottom" constant="5" id="CiY-ZB-qsM"/>
+                                                                        <constraint firstItem="43V-ch-hBD" firstAttribute="top" secondItem="1wg-e3-9sJ" secondAttribute="topMargin" constant="10" id="DJF-Ib-ipw"/>
                                                                         <constraint firstItem="zlF-3O-cBg" firstAttribute="top" secondItem="XwK-Cn-B9g" secondAttribute="bottom" constant="5" id="LtM-90-JC2"/>
                                                                         <constraint firstItem="dbb-2d-9Q0" firstAttribute="leading" secondItem="1wg-e3-9sJ" secondAttribute="leadingMargin" constant="5" id="NEJ-sC-Hjm"/>
                                                                         <constraint firstItem="XwK-Cn-B9g" firstAttribute="top" secondItem="1wg-e3-9sJ" secondAttribute="topMargin" constant="5" id="US5-Gl-FXO"/>
+                                                                        <constraint firstAttribute="trailingMargin" secondItem="43V-ch-hBD" secondAttribute="trailing" constant="10" id="fFe-OJ-Fod"/>
                                                                         <constraint firstItem="XwK-Cn-B9g" firstAttribute="leading" secondItem="1wg-e3-9sJ" secondAttribute="leadingMargin" constant="5" id="pxc-jy-NSg"/>
                                                                         <constraint firstItem="zlF-3O-cBg" firstAttribute="leading" secondItem="1wg-e3-9sJ" secondAttribute="leadingMargin" constant="5" id="xQ0-p8-dys"/>
                                                                     </constraints>
                                                                 </tableViewCellContentView>
                                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <connections>
+                                                                    <outlet property="className" destination="43V-ch-hBD" id="XiD-5g-eGe"/>
                                                                     <outlet property="commitM" destination="zlF-3O-cBg" id="yf1-qb-WIk"/>
                                                                     <outlet property="defect" destination="dbb-2d-9Q0" id="zTz-AL-TOV"/>
                                                                     <outlet property="repo" destination="XwK-Cn-B9g" id="K0m-Xq-TGy"/>

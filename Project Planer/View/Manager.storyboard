@@ -407,6 +407,9 @@
                                                     <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="handleAssessmentNameChange:" destination="xGL-f2-hpL" eventType="editingChanged" id="RJo-O1-NZM"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -423,6 +426,9 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="handleAssessmentNameChange:" destination="xGL-f2-hpL" eventType="editingDidEnd" id="zCG-1b-bl8"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -504,6 +510,9 @@
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="h9D-Xb-W71">
                                                     <rect key="frame" x="16" y="18" width="343" height="162.5"/>
+                                                    <connections>
+                                                        <action selector="handleDateChange:" destination="xGL-f2-hpL" eventType="valueChanged" id="4Ke-aR-iUk"/>
+                                                    </connections>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
@@ -554,13 +563,6 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="thumbTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </slider>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0% Achived.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QjR-R4-uFO">
-                                                    <rect key="frame" x="21" y="22" width="332" height="15"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -573,9 +575,28 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Add Assessment" id="O2h-fk-pHr">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qFz-pm-wca"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="b8c-DN-6yi"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qFz-pm-wca">
+                            <connections>
+                                <action selector="cancelAssessmentAction:" destination="xGL-f2-hpL" id="JhX-kr-U4x"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="b8c-DN-6yi">
+                            <connections>
+                                <action selector="saveAssessmentAction:" destination="xGL-f2-hpL" id="w4p-Hu-Aqq"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addToCalender" destination="TwH-1j-eLc" id="6hM-9A-zuG"/>
+                        <outlet property="assessmentName" destination="mgd-R9-cBd" id="Icb-H5-ExG"/>
+                        <outlet property="assessmentNote" destination="r2a-O5-I52" id="wfC-OA-peF"/>
+                        <outlet property="dueDateLab" destination="gFy-SX-y7A" id="dWX-n2-x1f"/>
+                        <outlet property="dueDatePicker" destination="h9D-Xb-W71" id="0sS-Yy-yxZ"/>
+                        <outlet property="handleProgressChange" destination="Eje-9X-e6n" id="DBu-hv-GRh"/>
+                        <outlet property="markprogress" destination="Eje-9X-e6n" id="lZw-RS-ECh"/>
+                        <outlet property="marksLab" destination="cHL-Cx-iro" id="f5F-nR-ddI"/>
+                        <outlet property="moduleName" destination="E9U-Pm-S0r" id="RRX-3S-vDW"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="koz-5l-cc6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -10,5 +10,6 @@ import Foundation
 public class Constants{
     
     static let GIT_BASE_URL = "https://api.github.com"
-    
+    static let GCM_BASE_URL = "http://localhost:8990/dataservice/git"
+
 }
