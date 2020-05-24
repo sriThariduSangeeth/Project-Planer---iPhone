@@ -33,7 +33,7 @@ class GitCMServices {
                             for cu in repo {
                                 
                                 let obj = cu as? [String:Any]
-                                defectsList += [Defects(repo:  (obj?["created_at"] as? String)!, commit:  (obj?["created_at"] as? String)!, defect:  (obj?["created_at"] as? String)!, className:  (obj?["created_at"] as? String)!)]
+                                defectsList += [Defects(repo:  (obj?["repo"] as? String)!, commit:  (obj?["commiter"] as? String)!, defect:  (obj?["issue"] as? String)!, className:  (obj?["class_name"] as? String)!)]
                             }
                                           
                             compltion(defectsList)

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		272A4DBC24741EA200FA7A5A /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272A4DBB24741EA200FA7A5A /* Task+CoreDataClass.swift */; };
+		272A4DBE24741F1400FA7A5A /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272A4DBD24741F1400FA7A5A /* Task+CoreDataProperties.swift */; };
 		2751BA0324639D2F005327BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751BA0224639D2F005327BF /* AppDelegate.swift */; };
 		2751BA0A24639D2F005327BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2751BA0824639D2F005327BF /* Main.storyboard */; };
 		2751BA0C24639D4F005327BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2751BA0B24639D4F005327BF /* Assets.xcassets */; };
@@ -53,6 +55,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		272A4DBB24741EA200FA7A5A /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
+		272A4DBD24741F1400FA7A5A /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2751B9FF24639D2F005327BF /* Assessment Planer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Assessment Planer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2751BA0224639D2F005327BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2751BA0924639D2F005327BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -230,6 +234,8 @@
 			children = (
 				27E1415E24716A660009C792 /* Assessment+CoreDataProperties.swift */,
 				27E1416024716B3C0009C792 /* Assessment+CoreDataClass.swift */,
+				272A4DBB24741EA200FA7A5A /* Task+CoreDataClass.swift */,
+				272A4DBD24741F1400FA7A5A /* Task+CoreDataProperties.swift */,
 			);
 			path = DBModel;
 			sourceTree = "<group>";
@@ -314,12 +320,14 @@
 				2751BA232463A75C005327BF /* MyDashBoardContoller.swift in Sources */,
 				27E14134246EFA870009C792 /* DetailViewController.swift in Sources */,
 				27E1414E24700DF40009C792 /* AssessmentAddViewController.swift in Sources */,
+				272A4DBE24741F1400FA7A5A /* Task+CoreDataProperties.swift in Sources */,
 				27E1416124716B3C0009C792 /* Assessment+CoreDataClass.swift in Sources */,
 				27E1412C246EDE920009C792 /* TaskTableViewCell.swift in Sources */,
 				2751BA3D24649187005327BF /* ProjectViewCell.swift in Sources */,
 				27E14143246F55C60009C792 /* AssesmentPlaner.xcdatamodeld in Sources */,
 				2751BA2D2463D647005327BF /* UIView+HideKeyBoard.swift in Sources */,
 				2751BA4124649E45005327BF /* UITableView+EmptyView.swift in Sources */,
+				272A4DBC24741EA200FA7A5A /* Task+CoreDataClass.swift in Sources */,
 				27E14140246F4D4A0009C792 /* MasterViewController.swift in Sources */,
 				27E14152247101230009C792 /* Formatter.swift in Sources */,
 				27BAA034246921FD00156592 /* DefectViewCell.swift in Sources */,

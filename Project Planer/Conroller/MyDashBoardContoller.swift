@@ -16,15 +16,18 @@ class MyDashBoardContoller : UIViewController ,UITableViewDataSource,UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getDefectsList1()
+        getDefectsList()
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
-       getDefectsList()
-        
+        getDefectsList()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+        self.defCount.text = String(self.defects.count)
     }
     
     func getDefectsList1() {
@@ -45,12 +48,11 @@ class MyDashBoardContoller : UIViewController ,UITableViewDataSource,UITableView
                 if let coun = result{
                    DispatchQueue.main.async {
                         self.defects = coun
+                        self.defCount.text = String(self.defects.count)
                         self.tableView.reloadData()
                     }
                 }
             }
-
-            print(self.defects.count)
         }
         
     }

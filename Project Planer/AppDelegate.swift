@@ -36,6 +36,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate , UISplitViewControllerDel
                 }
             }
         UNUserNotificationCenter.current().delegate = self
+        
+//        if let rootVC = window?.rootViewController as? MasterViewController {
+//            rootVC.managedObjectContext = self.persistentContainer.viewContext
+//            rootVC.container = persistentContainer
+//        }
+        
 
         return true
     }
@@ -62,6 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , UISplitViewControllerDel
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        self.saveContext()
     }
     
      // MARK: - Split view

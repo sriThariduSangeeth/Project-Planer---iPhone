@@ -10,7 +10,7 @@ import UIKit
 
 class AssessmentTableViewCell: UITableViewCell {
     
-    var cellDelegate: ProjectTableViewCellDelegate?
+    var cellDelegate: AssessmentTableViewCellDelegate?
     var notes: String = "Not Available"
     
     @IBOutlet weak var priorityIcon: UIImageView!
@@ -32,7 +32,7 @@ class AssessmentTableViewCell: UITableViewCell {
         self.cellDelegate?.customCell(cell: self, sender: sender as! UIButton, data: notes)
     }
     
-    func commonInit(_ assessmentName: String, taskProgress: CGFloat, marks: Int, dueDate: Date, notes: String) {
+    func commonInit(_ assessmentName: String, taskProgress: CGFloat, marks: Float, dueDate: Date, notes: String) {
         var iconName = "asses1"
         if marks <= 40{
             iconName = "asses1"
@@ -53,6 +53,6 @@ class AssessmentTableViewCell: UITableViewCell {
     
 }
 
-protocol ProjectTableViewCellDelegate {
-    func customCell(cell: AssessmentTableViewCell, sender button: UIButton, data data: String)
+protocol AssessmentTableViewCellDelegate {
+    func customCell(cell: AssessmentTableViewCell, sender button: UIButton, data: String)
 }
