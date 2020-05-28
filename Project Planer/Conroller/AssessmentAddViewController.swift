@@ -30,8 +30,10 @@ class AssessmentAddViewController: UITableViewController, UIPopoverPresentationC
     @IBOutlet weak var marksLab: UILabel!
     @IBOutlet weak var markprogress: UISlider!
     @IBOutlet weak var AddAssessmentBut: UIBarButtonItem!
-    @IBOutlet weak var handleProgressChange: UISlider!
     @IBOutlet weak var CancelAssessmentBut: UIBarButtonItem!
+
+    
+    
     
     var editingAssessment: Assessment? {
         didSet {
@@ -84,7 +86,21 @@ class AssessmentAddViewController: UITableViewController, UIPopoverPresentationC
             if let assessValue = assessmentValue{
                 assessValue.text = "\(Int(assessment.value))"
             }
-            
+            if let addToCalendarSwitch = addToCalender{
+                addToCalendarSwitch.setOn((editingAssessment?.addToCalendar)!, animated: true)
+            }
+            if let marksLabText = marksLab{
+                marksLabText.text = "\(NSString(format: "%.2f", assessment.marks) as String) %"
+            }
+            if let progressBar = markprogress{
+                progressBar.value = assessment.marks
+            }
+            if let endDate = dueDateLab {
+                endDate.text = formatter.formatDate(assessment.dueDate as Date)
+            }
+            if let endDatePicker = dueDatePicker {
+                endDatePicker.date = assessment.dueDate as Date
+            }
         }
     }
     
@@ -129,6 +145,10 @@ class AssessmentAddViewController: UITableViewController, UIPopoverPresentationC
         toggleAddButtonEnability()
     }
     
+    @IBAction func chnageMarkProgress(_ sender: UISlider) {
+        let progress = Int(sender.value)
+        marksLab.text = "\(progress) %"
+    }
     
     @IBAction func handleDateChange(_ sender: UIDatePicker) {
         dueDateLab.text = formatter.formatDate(sender.date)
@@ -138,6 +158,8 @@ class AssessmentAddViewController: UITableViewController, UIPopoverPresentationC
         dismissAddProjectPopOver()
     }
     
+    @IBAction func assessmentValueChangeAction(_ sender: UITextField) {
+    }
     
     @IBAction func saveAssessmentAction(_ sender: UIBarButtonItem) {
         addButClickEventHandle()
@@ -155,8 +177,11 @@ class AssessmentAddViewController: UITableViewController, UIPopoverPresentationC
             let eventStore = EKEventStore()
             
             let assessmentNameText = assessmentName.text
+            let moduleNameText = moduleName.text
             let endDate = dueDatePicker.date
             let notes = assessmentNote.text
+            let value = (assessmentValue.text! as NSString).floatValue
+            let marks = Float(markprogress.value)
             
             guard let appDelegate =
                 UIApplication.shared.delegate as? AppDelegate else {
@@ -223,27 +248,30 @@ class AssessmentAddViewController: UITableViewController, UIPopoverPresentationC
                     addedToCalendar = false
                 }
                 
-                assessment.setValue(assessmentNameText, forKeyPath: "name")
-                assessment.setValue(notes, forKeyPath: "notes")
+            assessment.setValue(assessmentNameText, forKeyPath: "name")
+            assessment.setValue(moduleNameText, forKey: "module")
+            assessment.setValue(notes, forKeyPath: "notes")
+            assessment.setValue(value, forKey: "value")
+            assessment.setValue(marks, forKey: "marks")
                 
-                if editingMode {
-                    assessment.setValue(editingAssessment?.startDate, forKeyPath: "startDate")
-                } else {
-                    assessment.setValue(now, forKeyPath: "startDate")
-                }
+            if editingMode {
+                assessment.setValue(editingAssessment?.startDate, forKeyPath: "startDate")
+            } else {
+                assessment.setValue(now, forKeyPath: "startDate")
+            }
                 
-                assessment.setValue(endDate, forKeyPath: "dueDate")
-                assessment.setValue(addedToCalendar, forKeyPath: "addToCalendar")
-                assessment.setValue(calendarIdentifier, forKey: "calendarIdentifier")
+            assessment.setValue(endDate, forKeyPath: "dueDate")
+            assessment.setValue(addedToCalendar, forKeyPath: "addToCalendar")
+            assessment.setValue(calendarIdentifier, forKey: "calendarIdentifier")
 
-                do {
-                    try managedContext.save()
-                    assessments.append(assessment)
-                } catch _ as NSError {
-                    let alert = UIAlertController(title: "Error", message: "An error occured while saving the project.", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                }
+            do {
+                try managedContext.save()
+                assessments.append(assessment)
+            } catch _ as NSError {
+                let alert = UIAlertController(title: "Error", message: "An error occured while saving the project.", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
             
             //validate else
             } else{

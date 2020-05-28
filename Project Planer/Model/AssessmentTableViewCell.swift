@@ -17,6 +17,8 @@ class AssessmentTableViewCell: UITableViewCell {
     @IBOutlet weak var assessNameLab: UILabel!
     @IBOutlet weak var dueDateLab: UILabel!
     @IBOutlet weak var marks: UILabel!
+    @IBOutlet weak var celenderPin: UIImageView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,14 +34,20 @@ class AssessmentTableViewCell: UITableViewCell {
         self.cellDelegate?.customCell(cell: self, sender: sender as! UIButton, data: notes)
     }
     
-    func commonInit(_ assessmentName: String, taskProgress: CGFloat, marks: Float, dueDate: Date, notes: String) {
-        var iconName = "asses1"
-        if marks <= 40{
-            iconName = "asses1"
-        } else if marks >= 41 && marks <= 60 {
-            iconName = "asses2"
-        } else if marks >= 61 {
-            iconName = "asses3"
+    func commonInit(_ assessmentName: String, taskProgress: CGFloat, marksVal: Float, dueDate: Date, notes: String , value: Float , addCalender: Bool) {
+        var iconName = "asse1"
+        if marksVal <= 40{
+            iconName = "asse1"
+        } else if marksVal >= 41 && marksVal <= 60 {
+            iconName = "asse2"
+        } else if marksVal >= 61 {
+            iconName = "asse3"
+        }
+        
+        if addCalender {
+            celenderPin.isHidden = false
+        }else{
+            celenderPin.isHidden = true
         }
         
         let formatter = DateFormatter()
@@ -48,6 +56,7 @@ class AssessmentTableViewCell: UITableViewCell {
         priorityIcon.image = UIImage(named: iconName)
         assessNameLab.text = assessmentName
         dueDateLab.text = "Due: \(formatter.string(from: dueDate))"
+        marks.text = "\(NSString(format: "%.2f", marksVal) as String) %"
         self.notes = notes
     }
     

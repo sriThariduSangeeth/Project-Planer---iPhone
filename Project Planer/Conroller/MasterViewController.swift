@@ -17,6 +17,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     var detailViewController: DetailViewController? = nil
     var managedObjectContext: NSManagedObjectContext? = nil
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
     
     let calculations: Calculations = Calculations()
     
@@ -39,16 +40,15 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-           if let indexPath = tableView.indexPathForSelectedRow {
-               let object = entityFetchedController.object(at: indexPath)
-               self.performSegue(withIdentifier: "showAssessmentDetails", sender: object)
-           }
-       }
+        if let indexPath = tableView.indexPathForSelectedRow {
+            let object = entityFetchedController.object(at: indexPath)
+            self.performSegue(withIdentifier: "showAssessmentDetails", sender: object)
+        }
+    }
     
     @objc
     func insertNewObject(_ sender: Any) {
         let context = self.entityFetchedController.managedObjectContext
-    
         do {
             try context.save()
         } catch {
@@ -87,13 +87,11 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
   
     // MARK: - Fetched entity controller
     
-    
     var entityFetchedController :  NSFetchedResultsController<Assessment>{
         
         if _entityFetchedController != nil {
             return _entityFetchedController!
         }
-        
         self.managedObjectContext = context
         
         let fetchRequest: NSFetchRequest<Assessment> = Assessment.fetchRequest()
@@ -102,7 +100,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         let sortDescriptor = NSSortDescriptor(key: "startDate", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
-        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
+        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext!, sectionNameKeyPath: nil, cacheName: "Master")
         aFetchedResultsController.delegate = self
         _entityFetchedController = aFetchedResultsController
         
@@ -112,10 +110,8 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
              let nserror = error as NSError
              fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
-        
         // update UI
         autoSelectTableRow()
-        
         return _entityFetchedController!
     }
     
@@ -126,7 +122,6 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     }
 
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-
         switch type {
             case .insert:
                 tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
@@ -138,7 +133,6 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     }
 
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-
         switch type {
             case .insert:
                 tableView.insertRows(at: [newIndexPath!], with: .fade)
@@ -152,19 +146,12 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             default:
                 return
         }
-
         // update UI
         autoSelectTableRow()
     }
 
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
-    }
-    
-    func configureCell(_ cell: AssessmentTableViewCell, withAssessment assessment: Assessment) {
-        
-        let assessmentProgress = calculations.getProjectProgress(assessment.tasks!.allObjects as! [Task])
-        cell.commonInit(assessment.name, taskProgress: CGFloat(assessmentProgress), marks: assessment.marks as Float, dueDate: assessment.dueDate as Date , notes: assessment.notes)
     }
     
     func autoSelectTableRow() {
@@ -223,6 +210,9 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         let assessment = entityFetchedController.object(at: indexPath)
         configureCell(cell, withAssessment: assessment)
         cell.cellDelegate = self
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = UIColor.darkGray
+        cell.selectedBackgroundView = bgColorView
         return cell
     }
     
@@ -249,6 +239,12 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     
     override func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
         autoSelectTableRow()
+    }
+       
+    func configureCell(_ cell: AssessmentTableViewCell, withAssessment assessment: Assessment) {
+        print(assessment)
+        let assessmentProgress = calculations.getProjectProgress(assessment.tasks!.allObjects as! [Task])
+        cell.commonInit(assessment.name, taskProgress: CGFloat(assessmentProgress), marksVal: assessment.marks as Float, dueDate: assessment.dueDate as Date , notes: assessment.notes , value: assessment.value , addCalender: assessment.addToCalendar)
     }
 }
 

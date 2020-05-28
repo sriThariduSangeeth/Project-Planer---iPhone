@@ -10,7 +10,7 @@
         <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="value" optional="YES" attributeType="Float" minValueString="0" maxValueString="100" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <relationship name="tasks" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="assessment" inverseEntity="Task"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="assessment" inverseEntity="Task"/>
     </entity>
     <entity name="Task" representedClassName=".Task" syncable="YES">
         <attribute name="addNotification" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -23,6 +23,6 @@
     </entity>
     <elements>
         <element name="Assessment" positionX="-63" positionY="-18" width="128" height="193"/>
-        <element name="Task" positionX="-54" positionY="-9" width="128" height="148"/>
+        <element name="Task" positionX="192.1875" positionY="-71.48828125" width="128" height="148"/>
     </elements>
 </model>
