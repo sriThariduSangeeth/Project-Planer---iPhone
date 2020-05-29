@@ -43,20 +43,23 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Configure the view
-        
+        if selectedAssessment == nil {
+            assessmentDetailView.isHidden = true
+            assessmentProgressBar.isHidden = true
+            dayProgressBar.isHidden = true
+            addTaskBut.isEnabled = false
+            editTaskBut.isEnabled = false
+            deleteTaskBut.isEnabled = false
+            taskTable.rowHeight = 0
+            taskTable.triggerEmptyMessage("Add a new Assessment to manage Tasks")
+        }
         configureView()
-//        guard let appDelegate =
-//            UIApplication.shared.delegate as? AppDelegate else {
-//                return
-//        }
-//        self.managedObjectContext = appDelegate.persistentContainer.viewContext
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+    
         // Set the default selected row
         let indexPath = IndexPath(row: 0, section: 0)
         if taskTable.hasRowAtIndexPath(indexPath: indexPath as NSIndexPath) {
@@ -68,12 +71,9 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
     func insertNewObject(_ sender: Any) {
 //        let context = self.fetchedResultsController.managedObjectContext
         let context = self.fetchedResultsController.managedObjectContext
-    
         do {
             try context.save()
         } catch {
-            // Replace this implementation with code to handle the error appropriately.
-            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
@@ -131,6 +131,13 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
 
     // MARK: - Segues
     
+    @IBAction func AddTaskBut(_ sender: UIBarButtonItem) {
+         self.performSegue(withIdentifier: "addTask", sender: self)
+     }
+     
+     @IBAction func EditTaskBut(_ sender: UIBarButtonItem) {
+     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addTask" {
             let controller = (segue.destination as! UINavigationController).topViewController as! TaskAddViewController
@@ -140,7 +147,7 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
                 controller.preferredContentSize = CGSize(width: 320, height: 500)
             }
         }
-        
+
         if segue.identifier == "showProjectNotes" {
             let controller = segue.destination as! NotesPopoverController
             controller.notes = selectedAssessment!.notes
@@ -149,7 +156,7 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
                 controller.preferredContentSize = CGSize(width: 300, height: 250)
             }
         }
-        
+
         if segue.identifier == "editTask" {
             if let indexPath = taskTable.indexPathForSelectedRow {
                 let object = fetchedResultsController.object(at: indexPath)
@@ -217,7 +224,6 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        print("add sec")
         switch type {
         case .insert:
             taskTable.insertRows(at: [newIndexPath!], with: .fade)
@@ -254,16 +260,7 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionInfo = fetchedResultsController.sections![section]
 
-        if selectedAssessment == nil {
-            assessmentDetailView.isHidden = true
-            assessmentProgressBar.isHidden = true
-            dayProgressBar.isHidden = true
-            addTaskBut.isEnabled = false
-            editTaskBut.isEnabled = false
-            deleteTaskBut.isEnabled = false
-            taskTable.triggerEmptyMessage("Add a new Assessment to manage Tasks")
-            return 0
-        }
+//        print(self.selectionOfAssessment!)
         
         if sectionInfo.numberOfObjects == 0 {
             editTaskBut.isEnabled = false
@@ -279,6 +276,15 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
         let task = fetchedResultsController.object(at: indexPath)
         configureCell(cell, withTask: task, index: indexPath.row)
         cell.cellDelegate = self
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = UIColor.darkGray
+        cell.contentView.backgroundColor = UIColor(red: 30/255, green: 30/255, blue: 30/255, alpha: 1.00)
+        cell.contentView.layer.cornerRadius = 10.0
+        cell.contentView.layer.borderWidth = 1.0
+        cell.contentView.layer.borderColor = UIColor(red: 0.25, green: 0.25, blue: 0.25, alpha: 1.00).cgColor
+        cell.contentView.layer.masksToBounds = false
+        cell.selectedBackgroundView = bgColorView
+        
         return cell
     }
     

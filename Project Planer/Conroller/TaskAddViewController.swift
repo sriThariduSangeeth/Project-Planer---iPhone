@@ -178,9 +178,9 @@ class TaskAddViewController: UITableViewController, UIPopoverPresentationControl
     }
     
     @IBAction func handleTaskProgressChange(_ sender: UISlider) {
-        let progress = Int(sender.value * 100)
-        taskProgressLab.text = "\(progress)%"
-        taskProgressSliderLab.text = "\(progress)% Completed"
+        let progress = Int(sender.value)
+        taskProgressLab.text = "\(progress) %"
+        taskProgressSliderLab.text = "\(progress) % Completed"
     }
     
     @IBAction func cancelTaskBut(_ sender: UIBarButtonItem) {
@@ -193,7 +193,7 @@ class TaskAddViewController: UITableViewController, UIPopoverPresentationControl
                    let taskName = taskNameLab.text
                    let dueDate = taskEndDatePicker.date
                    let startDate = taskStartDatePicker.date
-                   let progress = Float(taskProgressSlider.value * 100)
+                   let progress = Float(taskProgressSlider.value)
                    
                    let addNotificationFlag = Bool(addToCelender.isOn)
                    

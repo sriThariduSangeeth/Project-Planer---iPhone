@@ -13,7 +13,9 @@ import CoreData
 class MasterViewController: UITableViewController, NSFetchedResultsControllerDelegate, UIPopoverPresentationControllerDelegate {
     
     @IBOutlet var assessmentTable: UITableView!
+    @IBOutlet weak var hideMasterView: UIBarButtonItem!
     
+    var enterNum: Int = 0
     var detailViewController: DetailViewController? = nil
     var managedObjectContext: NSManagedObjectContext? = nil
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -33,10 +35,18 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     override func viewWillAppear(_ animated: Bool) {
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
+        enterNum += 1
         
-        // Set the default selected row
-        autoSelectTableRow()
-        
+        if (enterNum == 1){
+            // Set the default selected row
+            autoSelectTableRow()
+        }
+                
+    }
+    
+    
+    @IBAction func hideMaster(_ sender: UIBarButtonItem) {
+        self.splitViewController?.toggleMasterView()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -136,27 +146,37 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         switch type {
             case .insert:
                 tableView.insertRows(at: [newIndexPath!], with: .fade)
+                // update UI
+                autoSelectTableRow()
             case .delete:
                 tableView.deleteRows(at: [indexPath!], with: .fade)
+
             case .update:
                 configureCell(tableView.cellForRow(at: indexPath!)! as! AssessmentTableViewCell, withAssessment: anObject as! Assessment)
+                editChangeDetailView(object: anObject)
             case .move:
                 configureCell(tableView.cellForRow(at: indexPath!)! as! AssessmentTableViewCell, withAssessment: anObject as! Assessment)
                 tableView.moveRow(at: indexPath!, to: newIndexPath!)
+                // update UI
+                autoSelectTableRow()
             default:
                 return
         }
-        // update UI
-        autoSelectTableRow()
     }
 
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
     
+    func editChangeDetailView(object: Any){
+        
+        self.performSegue(withIdentifier: "showAssessmentDetails", sender: object)
+    }
+    
     func autoSelectTableRow() {
         let indexPath = IndexPath(row: 0, section: 0)
         if tableView.hasRowAtIndexPath(indexPath: indexPath as NSIndexPath) {
+        
             tableView.selectRow(at: indexPath, animated: true, scrollPosition: .bottom)
             
             if let indexPath = tableView.indexPathForSelectedRow {
@@ -212,6 +232,10 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         cell.cellDelegate = self
         let bgColorView = UIView()
         bgColorView.backgroundColor = UIColor.darkGray
+        cell.contentView.layer.cornerRadius = 10.0
+        cell.contentView.layer.borderWidth = 1.0
+        cell.contentView.layer.borderColor = UIColor(red: 0.25, green: 0.25, blue: 0.25, alpha: 1.00).cgColor
+        cell.contentView.layer.masksToBounds = false
         cell.selectedBackgroundView = bgColorView
         return cell
     }
@@ -242,7 +266,6 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     }
        
     func configureCell(_ cell: AssessmentTableViewCell, withAssessment assessment: Assessment) {
-        print(assessment)
         let assessmentProgress = calculations.getProjectProgress(assessment.tasks!.allObjects as! [Task])
         cell.commonInit(assessment.name, taskProgress: CGFloat(assessmentProgress), marksVal: assessment.marks as Float, dueDate: assessment.dueDate as Date , notes: assessment.notes , value: assessment.value , addCalender: assessment.addToCalendar)
     }

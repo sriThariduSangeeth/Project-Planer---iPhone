@@ -103,6 +103,7 @@
                                             <barButtonItem systemItem="add" id="5kA-PK-BCb" userLabel="Add Task">
                                                 <color key="tintColor" red="1" green="0.63588323349999998" blue="0.021472361209999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
+                                                    <action selector="AddTaskBut:" destination="ohZ-y1-uXb" id="Ymo-mf-0LL"/>
                                                     <segue destination="dmU-ot-OQq" kind="popoverPresentation" identifier="addTask" popoverAnchorBarButtonItem="5kA-PK-BCb" id="0fA-aj-fYw">
                                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                                     </segue>
@@ -112,6 +113,7 @@
                                             <barButtonItem systemItem="compose" id="iN1-VY-IlL" userLabel="Edit Task">
                                                 <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
+                                                    <action selector="EditTaskBut:" destination="ohZ-y1-uXb" id="ZpT-xO-bmS"/>
                                                     <segue destination="dmU-ot-OQq" kind="popoverPresentation" identifier="editTask" popoverAnchorBarButtonItem="iN1-VY-IlL" id="Ran-Yc-Lst">
                                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                                     </segue>
@@ -150,7 +152,7 @@
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="210" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AIG-4F-fQ0">
                                                 <rect key="frame" x="5" y="5" width="1014" height="838.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="sectionIndexBackgroundColor" red="0.18485030529999999" green="0.19589787719999999" blue="0.20479503269999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="tCell" rowHeight="200" id="kUb-kL-ild" customClass="TaskTableViewCell" customModule="Assessment_Planer" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="1014" height="200"/>
@@ -1061,7 +1063,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Assessment" id="SQi-BM-oil">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="75s-Ss-QEz"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="75s-Ss-QEz">
+                            <connections>
+                                <action selector="hideMaster:" destination="7gY-6q-taW" id="fWE-3a-tFY"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="edit" id="dYX-cW-HBd">
                                 <connections>
@@ -1081,6 +1087,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="assessmentTable" destination="3cP-ti-ako" id="jr6-Ns-Sw8"/>
+                        <outlet property="hideMasterView" destination="75s-Ss-QEz" id="ZRJ-eg-qr3"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8fQ-46-3Fq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

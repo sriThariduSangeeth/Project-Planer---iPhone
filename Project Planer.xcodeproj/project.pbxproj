@@ -34,8 +34,6 @@
 		27BAA034246921FD00156592 /* DefectViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BAA033246921FD00156592 /* DefectViewCell.swift */; };
 		27BAA0362469244800156592 /* Defects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BAA0352469244800156592 /* Defects.swift */; };
 		27E14126246ED4860009C792 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27E14125246ED4860009C792 /* Login.storyboard */; };
-		27E14128246EDD770009C792 /* AssessmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27E14127246EDD770009C792 /* AssessmentTableViewCell.xib */; };
-		27E1412A246EDDF30009C792 /* TaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27E14129246EDDF30009C792 /* TaskTableViewCell.xib */; };
 		27E1412C246EDE920009C792 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E1412B246EDE920009C792 /* TaskTableViewCell.swift */; };
 		27E1412E246EDF1E0009C792 /* AssessmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E1412D246EDF1E0009C792 /* AssessmentTableViewCell.swift */; };
 		27E14130246EE51B0009C792 /* Manager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27E1412F246EE51B0009C792 /* Manager.storyboard */; };
@@ -52,6 +50,7 @@
 		27E141572471037B0009C792 /* Calculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E141562471037B0009C792 /* Calculations.swift */; };
 		27E1415F24716A660009C792 /* Assessment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E1415E24716A660009C792 /* Assessment+CoreDataProperties.swift */; };
 		27E1416124716B3C0009C792 /* Assessment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E1416024716B3C0009C792 /* Assessment+CoreDataClass.swift */; };
+		27E9A6312481B1000082A576 /* UISplitView+MasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E9A6302481B1000082A576 /* UISplitView+MasterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,8 +83,6 @@
 		27BAA033246921FD00156592 /* DefectViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefectViewCell.swift; sourceTree = "<group>"; };
 		27BAA0352469244800156592 /* Defects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defects.swift; sourceTree = "<group>"; };
 		27E14125246ED4860009C792 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		27E14127246EDD770009C792 /* AssessmentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssessmentTableViewCell.xib; sourceTree = "<group>"; };
-		27E14129246EDDF30009C792 /* TaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTableViewCell.xib; sourceTree = "<group>"; };
 		27E1412B246EDE920009C792 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		27E1412D246EDF1E0009C792 /* AssessmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentTableViewCell.swift; sourceTree = "<group>"; };
 		27E1412F246EE51B0009C792 /* Manager.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Manager.storyboard; sourceTree = "<group>"; };
@@ -102,6 +99,7 @@
 		27E141562471037B0009C792 /* Calculations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculations.swift; sourceTree = "<group>"; };
 		27E1415E24716A660009C792 /* Assessment+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Assessment+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		27E1416024716B3C0009C792 /* Assessment+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Assessment+CoreDataClass.swift"; sourceTree = "<group>"; };
+		27E9A6302481B1000082A576 /* UISplitView+MasterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISplitView+MasterView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,8 +152,6 @@
 				2751BA1824639FE6005327BF /* LaunchScreen.storyboard */,
 				2751BA1624639EFF005327BF /* SplashScreen.storyboard */,
 				27E14125246ED4860009C792 /* Login.storyboard */,
-				27E14127246EDD770009C792 /* AssessmentTableViewCell.xib */,
-				27E14129246EDDF30009C792 /* TaskTableViewCell.xib */,
 				27E1412F246EE51B0009C792 /* Manager.storyboard */,
 			);
 			path = View;
@@ -198,6 +194,7 @@
 			children = (
 				2751BA2C2463D647005327BF /* UIView+HideKeyBoard.swift */,
 				2751BA4024649E45005327BF /* UITableView+EmptyView.swift */,
+				27E9A6302481B1000082A576 /* UISplitView+MasterView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -304,8 +301,6 @@
 				27E14126246ED4860009C792 /* Login.storyboard in Resources */,
 				27E14130246EE51B0009C792 /* Manager.storyboard in Resources */,
 				2751BA0A24639D2F005327BF /* Main.storyboard in Resources */,
-				27E14128246EDD770009C792 /* AssessmentTableViewCell.xib in Resources */,
-				27E1412A246EDDF30009C792 /* TaskTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +337,7 @@
 				27E1412E246EDF1E0009C792 /* AssessmentTableViewCell.swift in Sources */,
 				2751BA3B246423B9005327BF /* GitCMServices.swift in Sources */,
 				2751BA342463FE16005327BF /* GitHubServices.swift in Sources */,
+				27E9A6312481B1000082A576 /* UISplitView+MasterView.swift in Sources */,
 				27E1414A246FE8EA0009C792 /* NotesPopoverController.swift in Sources */,
 				2751BA39246400F2005327BF /* Repository.swift in Sources */,
 				27BAA0362469244800156592 /* Defects.swift in Sources */,
