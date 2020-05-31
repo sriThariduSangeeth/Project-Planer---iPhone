@@ -11,10 +11,19 @@ import UIKit
 
 class NotesPopoverController: UIViewController {
 
-
     @IBOutlet weak var notesView: UITextView!
+    var delegate : NoteViewControllerDelegate?
     
-var notes: String? {
+    @IBAction func dismissPopOver(_ sender: UIBarButtonItem) {
+       
+            delegate?.dismissPopover(strText: "dismiss")
+            dismiss(animated: true, completion: nil)
+        popoverPresentationController?.delegate?.popoverPresentationControllerDidDismissPopover?(popoverPresentationController!)
+            
+        
+    }
+    
+    var notes: String? {
         didSet {
             configureView()
         }
@@ -27,10 +36,16 @@ var notes: String? {
     }
     
     func configureView() {
+        
         if let notes = notes {
             if let notesView = notesView {
                 notesView.text = notes
             }
         }
     }
+    
+}
+
+protocol NoteViewControllerDelegate{
+    func dismissPopover( strText : String)
 }

@@ -10,7 +10,9 @@ import UIKit
 import CoreData
 import EventKit
 
-class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate,  UIPopoverPresentationControllerDelegate , UITableViewDelegate, UITableViewDataSource {
+class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate,  UIPopoverPresentationControllerDelegate , UITableViewDelegate, UITableViewDataSource, NoteViewControllerDelegate {
+    
+    
    
     
     @IBOutlet weak var taskTable: UITableView!
@@ -24,6 +26,12 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
     @IBOutlet weak var editTaskBut: UIBarButtonItem!
     @IBOutlet weak var deleteTaskBut: UIBarButtonItem!
     @IBOutlet weak var ModuleNameLab: UILabel!
+    
+    @IBOutlet weak var taskTavleView: UIView!
+    
+    
+    @IBOutlet var blurView: UIVisualEffectView!
+    
     
     let formatter: Formatter = Formatter()
     let calculations: Calculations = Calculations()
@@ -44,6 +52,8 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         // Configure the view
+        blurView.bounds = self.view.bounds
+        
         if selectedAssessment == nil {
             assessmentDetailView.isHidden = true
             assessmentProgressBar.isHidden = true
@@ -59,7 +69,6 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-    
         // Set the default selected row
         let indexPath = IndexPath(row: 0, section: 0)
         if taskTable.hasRowAtIndexPath(indexPath: indexPath as NSIndexPath) {
@@ -78,6 +87,7 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
     }
+    
     
     
     func configureView(){
@@ -122,12 +132,9 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
                 self.dayProgressBar?.progress =  CGFloat(daysLeftProgress) / 100
             }
         }
-        
-        if selectedAssessment == nil {
-            //taskTable.isHidden = true
-            //projectDetailView.isHidden = true
-        }
     }
+    
+   
 
     // MARK: - Segues
     
@@ -143,12 +150,13 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
             let controller = (segue.destination as! UINavigationController).topViewController as! TaskAddViewController
             controller.selectedAssessment = selectedAssessment
             if let controller = segue.destination as? UIViewController {
-                controller.popoverPresentationController!.delegate = self
+                controller.popoverPresentationController?.delegate = self
                 controller.preferredContentSize = CGSize(width: 320, height: 500)
             }
         }
 
         if segue.identifier == "showProjectNotes" {
+//            animateIn(pointView: self.blurView)
             let controller = segue.destination as! NotesPopoverController
             controller.notes = selectedAssessment!.notes
             if let controller = segue.destination as? UIViewController {
@@ -167,6 +175,16 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
         }
     }
     
+    @IBAction func deleteAction(_ sender: UIBarButtonItem) {
+        self.taskTable.isEditing = !self.taskTable.isEditing
+        if (self.taskTable.isEditing){
+            sender.title = "Done"
+        }
+    }
+    
+    func dismissPopover(strText: String) {
+        animateOut(pointView: self.blurView)
+    }
     
     // MARK: - Fetched results controller
     
@@ -318,6 +336,7 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
         showRect.origin.y -= 5
         
         let controller = self.storyboard?.instantiateViewController(withIdentifier: "NotesPopoverController") as? NotesPopoverController
+        controller?.delegate = self
         controller?.modalPresentationStyle = .popover
         controller?.preferredContentSize = CGSize(width: 300, height: 250)
         controller?.notes = notes
@@ -328,6 +347,7 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
             popoverPresentationController.sourceRect = showRect
             
             if let popoverController = controller {
+                animateIn(pointView: self.blurView)
                 present(popoverController, animated: true, completion: nil)
             }
         }
@@ -354,6 +374,32 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
         
         return identifier
     }
+    
+    func animateIn(pointView: UIView){
+           
+        let masterView = self.view!
+        let backgroundView = self.taskTavleView!
+        backgroundView.addSubview(pointView)
+           
+        pointView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+        pointView.alpha = 0
+        pointView.center = masterView.center
+           
+        UIView.animate(withDuration: 0.3, animations: {
+            pointView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            pointView.alpha = 1
+        })
+           
+    }
+       
+       func animateOut(pointView: UIView){
+           UIView.animate(withDuration: 0.3, animations: {
+               pointView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+               pointView.alpha = 0
+           }, completion: { _ in
+               pointView.removeFromSuperview()
+           })
+       }
        
 }
 

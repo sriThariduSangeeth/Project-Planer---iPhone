@@ -15,7 +15,6 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     @IBOutlet var assessmentTable: UITableView!
     @IBOutlet weak var hideMasterView: UIBarButtonItem!
     
-    var enterNum: Int = 0
     var detailViewController: DetailViewController? = nil
     var managedObjectContext: NSManagedObjectContext? = nil
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -30,18 +29,13 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
+        
+        autoSelectTableRow()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
-        enterNum += 1
-        
-        if (enterNum == 1){
-            // Set the default selected row
-            autoSelectTableRow()
-        }
-                
     }
     
     

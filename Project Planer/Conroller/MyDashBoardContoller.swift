@@ -65,7 +65,7 @@ class MyDashBoardContoller : UIViewController ,UITableViewDataSource,UITableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
            if defects.count == 0 {
-               self.tableView.triggerEmptyMessage("No Projects found !")
+               self.tableView.triggerEmptyMessage("No Technical defects found !")
            } else {
                self.tableView.restore()
            }

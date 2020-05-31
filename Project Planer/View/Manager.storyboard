@@ -53,7 +53,7 @@
                                                 <rect key="frame" x="279.5" y="108.5" width="25" height="24"/>
                                                 <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
-                                                    <segue destination="8ia-W0-uxU" kind="popoverPresentation" identifier="showAssessmentNotes" popoverAnchorView="LLz-om-Hev" id="fAB-5P-sTN">
+                                                    <segue destination="2dk-Dd-7Sq" kind="popoverPresentation" identifier="showProjectNotes" popoverAnchorView="LLz-om-Hev" id="qjJ-el-Kzz">
                                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                                     </segue>
                                                 </connections>
@@ -121,6 +121,9 @@
                                             </barButtonItem>
                                             <barButtonItem systemItem="trash" id="UEJ-t0-CTx" userLabel="Delete Task">
                                                 <color key="tintColor" red="1" green="0.63588323349999998" blue="0.021472361209999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <action selector="deleteAction:" destination="ohZ-y1-uXb" id="cyq-XD-xXt"/>
+                                                </connections>
                                             </barButtonItem>
                                         </items>
                                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -315,75 +318,96 @@
                         <outlet property="assessmentDetailView" destination="VPX-ix-y4D" id="UOt-QR-9mG"/>
                         <outlet property="assessmentNameLab" destination="9vW-dm-VZb" id="ygb-Qj-H9Z"/>
                         <outlet property="assessmentProgressBar" destination="2WL-J2-kUQ" id="wpV-7P-hss"/>
+                        <outlet property="blurView" destination="cgs-Kd-WiJ" id="CSj-Wz-hLW"/>
                         <outlet property="dayProgressBar" destination="qcf-b0-jJQ" id="UsL-x6-pHM"/>
                         <outlet property="deleteTaskBut" destination="UEJ-t0-CTx" id="8CE-6f-BmA"/>
                         <outlet property="dueDateLab" destination="Ghb-zn-gc2" id="AkG-sH-jvy"/>
                         <outlet property="editTaskBut" destination="iN1-VY-IlL" id="oXY-2o-rZF"/>
                         <outlet property="priorityLab" destination="AmV-v4-wRA" id="pPr-E1-Mgq"/>
                         <outlet property="taskTable" destination="AIG-4F-fQ0" id="nzK-kG-eI3"/>
+                        <outlet property="taskTavleView" destination="cBV-eJ-2VG" id="uKp-IA-qrH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wpd-an-vX0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" id="cgs-Kd-WiJ">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="KLR-Rp-NER">
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.12826412671232876" colorSpace="custom" customColorSpace="sRGB"/>
+                    <blurEffect style="systemUltraThinMaterialDark"/>
+                </visualEffectView>
             </objects>
             <point key="canvasLocation" x="1600.1953125" y="1007.1742313323572"/>
         </scene>
         <!--Notes Popover Controller-->
-        <scene sceneID="f6E-MH-uft">
+        <scene sceneID="uvD-HH-9S1">
             <objects>
-                <viewController storyboardIdentifier="NotesPopoverController" id="8ia-W0-uxU" customClass="NotesPopoverController" customModule="Assessment_Planer" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="nna-Td-e4I">
-                        <rect key="frame" x="0.0" y="0.0" width="388" height="667"/>
+                <viewController storyboardIdentifier="NotesPopoverController" interfaceStyle="dark" id="2dk-Dd-7Sq" customClass="NotesPopoverController" customModule="Assessment_Planer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jwZ-LX-KP8">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="380"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OXq-5K-JHF">
-                                <rect key="frame" x="0.0" y="0.0" width="388" height="50"/>
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="HRE-ep-wG7">
+                                <rect key="frame" x="0.0" y="0.0" width="400" height="56"/>
                                 <items>
-                                    <navigationItem title="Notes" id="dTj-bx-yy6"/>
+                                    <navigationItem title="Note" id="AWg-Ot-qDL">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="CLk-mT-8om">
+                                            <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="dismissPopOver:" destination="2dk-Dd-7Sq" id="uwW-IV-yKR"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="8W0-ce-6et">
-                                <rect key="frame" x="13" y="55" width="375" height="612"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Yy-CU-iIe">
+                                <rect key="frame" x="20" y="78" width="360" height="282"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="56U-cJ-gZL">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="596"/>
-                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Text typing..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Iu8-EN-XwS">
+                                        <rect key="frame" x="0.0" y="0.0" width="360" height="282"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="56U-cJ-gZL" secondAttribute="trailing" id="0kr-Kf-Mwc"/>
-                                    <constraint firstItem="56U-cJ-gZL" firstAttribute="leading" secondItem="8W0-ce-6et" secondAttribute="leading" id="5xh-02-u7Y"/>
-                                    <constraint firstItem="56U-cJ-gZL" firstAttribute="centerX" secondItem="8W0-ce-6et" secondAttribute="centerX" id="EBJ-rH-u5F"/>
-                                    <constraint firstAttribute="bottom" secondItem="56U-cJ-gZL" secondAttribute="bottom" id="HLk-e5-61d"/>
-                                    <constraint firstItem="56U-cJ-gZL" firstAttribute="top" secondItem="8W0-ce-6et" secondAttribute="top" id="jOq-cF-6he"/>
-                                    <constraint firstItem="56U-cJ-gZL" firstAttribute="width" secondItem="8W0-ce-6et" secondAttribute="width" id="udb-x4-tGX"/>
+                                    <constraint firstAttribute="bottom" secondItem="Iu8-EN-XwS" secondAttribute="bottom" id="5gh-2M-PZA"/>
+                                    <constraint firstItem="Iu8-EN-XwS" firstAttribute="leading" secondItem="9Yy-CU-iIe" secondAttribute="leading" id="GBn-7C-8eF"/>
+                                    <constraint firstItem="Iu8-EN-XwS" firstAttribute="height" secondItem="9Yy-CU-iIe" secondAttribute="height" id="M8N-7g-P2f"/>
+                                    <constraint firstItem="Iu8-EN-XwS" firstAttribute="top" secondItem="9Yy-CU-iIe" secondAttribute="top" id="RhB-3N-XT6"/>
+                                    <constraint firstAttribute="trailing" secondItem="Iu8-EN-XwS" secondAttribute="trailing" id="We2-kn-oB3"/>
+                                    <constraint firstItem="Iu8-EN-XwS" firstAttribute="width" secondItem="9Yy-CU-iIe" secondAttribute="width" id="tdY-iR-2pp"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="N6X-Qg-inL" firstAttribute="trailing" secondItem="8W0-ce-6et" secondAttribute="trailing" id="36M-nR-IDs"/>
-                            <constraint firstItem="8W0-ce-6et" firstAttribute="width" secondItem="N6X-Qg-inL" secondAttribute="width" id="5NX-5Q-qbd"/>
-                            <constraint firstItem="OXq-5K-JHF" firstAttribute="centerX" secondItem="nna-Td-e4I" secondAttribute="centerX" id="EKd-ds-56W"/>
-                            <constraint firstItem="OXq-5K-JHF" firstAttribute="leading" secondItem="nna-Td-e4I" secondAttribute="leading" id="GdF-uc-j71"/>
-                            <constraint firstAttribute="trailing" secondItem="OXq-5K-JHF" secondAttribute="trailing" id="O7G-df-R8r"/>
-                            <constraint firstItem="8W0-ce-6et" firstAttribute="height" secondItem="nna-Td-e4I" secondAttribute="height" multiplier="0.917541" id="Vcb-yb-Ayx"/>
-                            <constraint firstItem="OXq-5K-JHF" firstAttribute="top" secondItem="nna-Td-e4I" secondAttribute="top" id="o2J-x4-Uvd"/>
-                            <constraint firstItem="8W0-ce-6et" firstAttribute="top" secondItem="OXq-5K-JHF" secondAttribute="bottom" constant="5" id="tnu-lV-Uvs"/>
-                            <constraint firstItem="8W0-ce-6et" firstAttribute="leading" secondItem="N6X-Qg-inL" secondAttribute="leading" id="uQK-fZ-jBH"/>
-                            <constraint firstItem="56U-cJ-gZL" firstAttribute="height" secondItem="nna-Td-e4I" secondAttribute="height" multiplier="0.893553" id="z6x-AV-2Hb"/>
-                            <constraint firstItem="N6X-Qg-inL" firstAttribute="bottom" secondItem="8W0-ce-6et" secondAttribute="bottom" id="zFj-Jl-nLp"/>
+                            <constraint firstItem="HRE-ep-wG7" firstAttribute="leading" secondItem="PEt-rz-5gB" secondAttribute="leading" id="1fI-O7-HdT"/>
+                            <constraint firstItem="PEt-rz-5gB" firstAttribute="bottom" secondItem="9Yy-CU-iIe" secondAttribute="bottom" constant="20" id="CN9-K3-zPR"/>
+                            <constraint firstItem="9Yy-CU-iIe" firstAttribute="centerX" secondItem="jwZ-LX-KP8" secondAttribute="centerX" id="Kdi-lT-CL4"/>
+                            <constraint firstItem="9Yy-CU-iIe" firstAttribute="leading" secondItem="PEt-rz-5gB" secondAttribute="leading" constant="20" id="OgJ-L1-C3u"/>
+                            <constraint firstItem="PEt-rz-5gB" firstAttribute="trailing" secondItem="9Yy-CU-iIe" secondAttribute="trailing" constant="20" id="Q0w-El-5cP"/>
+                            <constraint firstItem="HRE-ep-wG7" firstAttribute="trailing" secondItem="PEt-rz-5gB" secondAttribute="trailing" id="RZY-47-sTT"/>
+                            <constraint firstItem="9Yy-CU-iIe" firstAttribute="centerY" secondItem="jwZ-LX-KP8" secondAttribute="centerY" constant="29" id="VMc-mC-zMf"/>
+                            <constraint firstItem="HRE-ep-wG7" firstAttribute="top" secondItem="PEt-rz-5gB" secondAttribute="top" id="YjM-pX-XA0"/>
+                            <constraint firstItem="9Yy-CU-iIe" firstAttribute="top" relation="greaterThanOrEqual" secondItem="HRE-ep-wG7" secondAttribute="bottom" constant="20" id="okn-qX-vRE"/>
+                            <constraint firstItem="HRE-ep-wG7" firstAttribute="centerX" secondItem="jwZ-LX-KP8" secondAttribute="centerX" id="tg8-SA-ehW"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="N6X-Qg-inL"/>
+                        <viewLayoutGuide key="safeArea" id="PEt-rz-5gB"/>
                     </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="400" height="400"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="400" height="400"/>
                     <connections>
-                        <outlet property="notesView" destination="56U-cJ-gZL" id="Pe2-PD-DiK"/>
+                        <outlet property="notesView" destination="Iu8-EN-XwS" id="FN3-Ih-925"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OO6-yb-xyN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wyJ-Ju-riY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1607.8125" y="1753.8799414348462"/>
+            <point key="canvasLocation" x="1599.609375" y="1567.6427525622253"/>
         </scene>
         <!--Add Assessment-->
         <scene sceneID="CKk-Pe-fIp">
@@ -1153,7 +1177,7 @@
         <image name="pinIcon" width="171" height="171"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bzg-Jo-9dQ"/>
+        <segue reference="8Ri-N0-vR2"/>
         <segue reference="0fA-aj-fYw"/>
         <segue reference="Rqw-3R-pqT"/>
     </inferredMetricsTieBreakers>
