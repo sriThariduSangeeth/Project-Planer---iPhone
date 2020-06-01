@@ -25,6 +25,7 @@ class TaskAddViewController: UITableViewController, UIPopoverPresentationControl
     let now = Date()
 
     let formatter: Formatter = Formatter()
+    let setNotify:SetNotificationCelender = SetNotificationCelender()
     let notificationCenter = UNUserNotificationCenter.current()
     
     @IBOutlet weak var addToCelender: UISwitch!
@@ -130,7 +131,7 @@ class TaskAddViewController: UITableViewController, UIPopoverPresentationControl
                 label.text = "\(Int(task.progress))%"
             }
             if let slider = taskProgressSlider {
-                slider.value = task.progress / 100
+                slider.value = task.progress
             }
         }
         
@@ -214,27 +215,29 @@ class TaskAddViewController: UITableViewController, UIPopoverPresentationControl
                    }
                    
                    if addNotificationFlag {
-                       notificationCenter.getNotificationSettings { (notificationSettings) in
-                           switch notificationSettings.authorizationStatus {
-                           case .notDetermined:
-                               self.requestAuthorization(completionHandler: { (success) in
-                                   guard success else { return }
-                                   print("Scheduling Notifications")
-                                   // Schedule Local Notification
-                                   self.scheduleLocalNotification("Task Deadline Missed!", subtitle: "Task: \(taskName!)", body: "You missed the deadline for the task '\(taskName!)' which was due on \(self.formatter.formatDate(dueDate)).", date: dueDate)
-                                   print("Scheduled Notifications")
-                               })
-                           case .authorized:
-                               
-                               // Schedule Local Notification
-                               self.scheduleLocalNotification("Task Deadline Missed!", subtitle: "Task: \(taskName!)", body: "You missed the deadline for the task '\(taskName!)' which was due on \(self.formatter.formatDate(dueDate)).", date: dueDate)
-                               print("Scheduled Notifications")
-                           case .denied:
-                               print("Application Not Allowed to Display Notifications")
-                           case .provisional:
-                               print("Application Not Allowed to Display Notifications")
-                           }
-                       }
+                    setNotify.setNotify(task: task as! Task, dueDate: dueDate, taskName: taskName!)
+                    
+//                       notificationCenter.getNotificationSettings { (notificationSettings) in
+//                           switch notificationSettings.authorizationStatus {
+//                           case .notDetermined:
+//                               self.requestAuthorization(completionHandler: { (success) in
+//                                   guard success else { return }
+//                                   print("Scheduling Notifications")
+//                                   // Schedule Local Notification
+//                                   self.scheduleLocalNotification("Task Deadline Missed!", subtitle: "Task: \(taskName!)", body: "You missed the deadline for the task '\(taskName!)' which was due on \(self.formatter.formatDate(dueDate)).", date: dueDate)
+//                                   print("Scheduled Notifications")
+//                               })
+//                           case .authorized:
+//
+//                               // Schedule Local Notification
+//                               self.scheduleLocalNotification("Task Deadline Missed!", subtitle: "Task: \(taskName!)", body: "You missed the deadline for the task '\(taskName!)' which was due on \(self.formatter.formatDate(dueDate)).", date: dueDate)
+//                               print("Scheduled Notifications")
+//                           case .denied:
+//                               print("Application Not Allowed to Display Notifications")
+//                           case .provisional:
+//                               print("Application Not Allowed to Display Notifications")
+//                           }
+//                       }
                    }
                    
                    task.setValue(taskName, forKeyPath: "name")
@@ -268,41 +271,41 @@ class TaskAddViewController: UITableViewController, UIPopoverPresentationControl
         toggleAddButtonEnability()
     }
     
-    func scheduleLocalNotification(_ title: String, subtitle: String, body: String, date: Date) {
-        // Create Notification Content
-        let notificationContent = UNMutableNotificationContent()
-        let identifier = "\(UUID().uuidString)"
-        
-        // Configure Notification Content
-        notificationContent.title = title
-        notificationContent.subtitle = subtitle
-        notificationContent.body = body
-        
-        // Add Trigger
-        // let notificationTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 20.0, repeats: false)
-        let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
-        
-        // Create Notification Request
-        let notificationRequest = UNNotificationRequest(identifier: identifier, content: notificationContent, trigger: trigger)
-        
-        // Add Request to User Notification Center
-        notificationCenter.add(notificationRequest) { (error) in
-            if let error = error {
-                print("Unable to Add Notification Request (\(error), \(error.localizedDescription))")
-            }
-        }
-    }
-    
-    func requestAuthorization(completionHandler: @escaping (_ success: Bool) -> ()) {
-        // Request Authorization
-        notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { (success, error) in
-            if let error = error {
-                print("Request Authorization Failed (\(error), \(error.localizedDescription))")
-            }
-            completionHandler(success)
-        }
-    }
+//    func scheduleLocalNotification(_ title: String, subtitle: String, body: String, date: Date) {
+//        // Create Notification Content
+//        let notificationContent = UNMutableNotificationContent()
+//        let identifier = "\(UUID().uuidString)"
+//
+//        // Configure Notification Content
+//        notificationContent.title = title
+//        notificationContent.subtitle = subtitle
+//        notificationContent.body = body
+//
+//        // Add Trigger
+//        // let notificationTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 20.0, repeats: false)
+//        let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+//        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+//
+//        // Create Notification Request
+//        let notificationRequest = UNNotificationRequest(identifier: identifier, content: notificationContent, trigger: trigger)
+//
+//        // Add Request to User Notification Center
+//        notificationCenter.add(notificationRequest) { (error) in
+//            if let error = error {
+//                print("Unable to Add Notification Request (\(error), \(error.localizedDescription))")
+//            }
+//        }
+//    }
+//
+//    func requestAuthorization(completionHandler: @escaping (_ success: Bool) -> ()) {
+//        // Request Authorization
+//        notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { (success, error) in
+//            if let error = error {
+//                print("Request Authorization Failed (\(error), \(error.localizedDescription))")
+//            }
+//            completionHandler(success)
+//        }
+//    }
     
     
 }

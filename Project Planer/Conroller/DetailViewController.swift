@@ -45,7 +45,7 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
     var selectedAssessment: Assessment? {
         didSet {
 //            // Update the view.
-            configureView()
+            setUpDetailView()
         }
     }
     
@@ -63,8 +63,9 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
             deleteTaskBut.isEnabled = false
             taskTable.rowHeight = 0
             taskTable.triggerEmptyMessage("Add a new Assessment to manage Tasks")
+     
         }
-        configureView()
+        setUpDetailView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,7 +79,6 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
     
     @objc
     func insertNewObject(_ sender: Any) {
-//        let context = self.fetchedResultsController.managedObjectContext
         let context = self.fetchedResultsController.managedObjectContext
         do {
             try context.save()
@@ -90,7 +90,7 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
     
     
     
-    func configureView(){
+    func setUpDetailView(){
         // Update the user interface for the detail item.
         if let assessment = selectedAssessment {
             if let nameLabel = assessmentNameLab {
@@ -143,8 +143,15 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
      }
      
      @IBAction func EditTaskBut(_ sender: UIBarButtonItem) {
+        self.performSegue(withIdentifier: "editTask", sender: self)
      }
     
+    @IBAction func deleteAction(_ sender: UIBarButtonItem) {
+        self.taskTable.isEditing = !self.taskTable.isEditing
+        if (self.taskTable.isEditing){
+            sender.title = "Done"
+        }
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addTask" {
             let controller = (segue.destination as! UINavigationController).topViewController as! TaskAddViewController
@@ -175,12 +182,7 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
         }
     }
     
-    @IBAction func deleteAction(_ sender: UIBarButtonItem) {
-        self.taskTable.isEditing = !self.taskTable.isEditing
-        if (self.taskTable.isEditing){
-            sender.title = "Done"
-        }
-    }
+
     
     func dismissPopover(strText: String) {
         animateOut(pointView: self.blurView)
@@ -256,7 +258,7 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
             return
         
         }
-        configureView()
+        setUpDetailView()
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {

@@ -8,17 +8,20 @@
 
 import UIKit
 import CoreData
-
+import EventKit
 
 class MasterViewController: UITableViewController, NSFetchedResultsControllerDelegate, UIPopoverPresentationControllerDelegate {
     
     @IBOutlet var assessmentTable: UITableView!
     @IBOutlet weak var hideMasterView: UIBarButtonItem!
     
+    let setCelenderEvent: SetCelenderEvent = SetCelenderEvent()
+    
     var detailViewController: DetailViewController? = nil
     var managedObjectContext: NSManagedObjectContext? = nil
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
+    let eventStore = EKEventStore()
+    var eventDeleted = false
     
     let calculations: Calculations = Calculations()
     
@@ -141,10 +144,14 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             case .insert:
                 tableView.insertRows(at: [newIndexPath!], with: .fade)
                 // update UI
-                autoSelectTableRow()
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    self.autoSelectTableRow()
+                }
+                autoCloseMasterView()
             case .delete:
                 tableView.deleteRows(at: [indexPath!], with: .fade)
-
+                eventDeleted = setCelenderEvent.deleteEventInCelender(assessment: (anObject as! Assessment))            
             case .update:
                 configureCell(tableView.cellForRow(at: indexPath!)! as! AssessmentTableViewCell, withAssessment: anObject as! Assessment)
                 editChangeDetailView(object: anObject)
@@ -158,12 +165,14 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         }
     }
 
+    func autoCloseMasterView(){
+        self.splitViewController?.toggleMasterView()
+    }
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
     
     func editChangeDetailView(object: Any){
-        
         self.performSegue(withIdentifier: "showAssessmentDetails", sender: object)
     }
     

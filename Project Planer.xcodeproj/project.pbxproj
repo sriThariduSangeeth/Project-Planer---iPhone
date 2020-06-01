@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		272A4DBC24741EA200FA7A5A /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272A4DBB24741EA200FA7A5A /* Task+CoreDataClass.swift */; };
 		272A4DBE24741F1400FA7A5A /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272A4DBD24741F1400FA7A5A /* Task+CoreDataProperties.swift */; };
+		272BC26D2484C1440016F47C /* SetCelenderEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272BC26C2484C1440016F47C /* SetCelenderEvent.swift */; };
+		272BC26F2484FF720016F47C /* SetNotificationCelender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272BC26E2484FF720016F47C /* SetNotificationCelender.swift */; };
 		2751BA0324639D2F005327BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751BA0224639D2F005327BF /* AppDelegate.swift */; };
 		2751BA0A24639D2F005327BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2751BA0824639D2F005327BF /* Main.storyboard */; };
 		2751BA0C24639D4F005327BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2751BA0B24639D4F005327BF /* Assets.xcassets */; };
@@ -56,6 +58,8 @@
 /* Begin PBXFileReference section */
 		272A4DBB24741EA200FA7A5A /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
 		272A4DBD24741F1400FA7A5A /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		272BC26C2484C1440016F47C /* SetCelenderEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCelenderEvent.swift; sourceTree = "<group>"; };
+		272BC26E2484FF720016F47C /* SetNotificationCelender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNotificationCelender.swift; sourceTree = "<group>"; };
 		2751B9FF24639D2F005327BF /* Assessment Planer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Assessment Planer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2751BA0224639D2F005327BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2751BA0924639D2F005327BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -185,6 +189,8 @@
 				27E14151247101230009C792 /* Formatter.swift */,
 				27E14153247102E10009C792 /* Colours.swift */,
 				27E141562471037B0009C792 /* Calculations.swift */,
+				272BC26C2484C1440016F47C /* SetCelenderEvent.swift */,
+				272BC26E2484FF720016F47C /* SetNotificationCelender.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -330,7 +336,9 @@
 				27E1413E246F2F500009C792 /* CircularProgressBar.swift in Sources */,
 				2751BA212463A6CD005327BF /* TabViewController.swift in Sources */,
 				27E1415F24716A660009C792 /* Assessment+CoreDataProperties.swift in Sources */,
+				272BC26D2484C1440016F47C /* SetCelenderEvent.swift in Sources */,
 				27E14154247102E10009C792 /* Colours.swift in Sources */,
+				272BC26F2484FF720016F47C /* SetNotificationCelender.swift in Sources */,
 				27E141572471037B0009C792 /* Calculations.swift in Sources */,
 				27BAA032246912B300156592 /* ProjectViewCell.swift in Sources */,
 				2751BA302463FC97005327BF /* HttpAdapterService.swift in Sources */,

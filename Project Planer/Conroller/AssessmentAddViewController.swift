@@ -17,6 +17,7 @@ class AssessmentAddViewController: UITableViewController, UIPopoverPresentationC
     var marksAchiveVisible = false
     var editingMode: Bool = false
     let now = Date();
+    let setCelenderEvent: SetCelenderEvent = SetCelenderEvent()
     
     let formatter: Formatter = Formatter()
     
@@ -174,7 +175,6 @@ class AssessmentAddViewController: UITableViewController, UIPopoverPresentationC
             var addedToCalendar = false
             var eventDeleted = false
             let addToCalendarFlag = Bool(addToCalender.isOn)
-            let eventStore = EKEventStore()
             
             let assessmentNameText = assessmentName.text
             let moduleNameText = moduleName.text
@@ -200,53 +200,32 @@ class AssessmentAddViewController: UITableViewController, UIPopoverPresentationC
             
             if addToCalendarFlag {
                 if editingMode {
-                        if let assessment = editingAssessment {
-                            if !assessment.addToCalendar {
-                                if (EKEventStore.authorizationStatus(for: .event) != EKAuthorizationStatus.authorized) {
-                                    eventStore.requestAccess(to: .event, completion: {
-                                        granted, error in
-                                        calendarIdentifier = self.createEvent(eventStore, title: assessmentNameText!, startDate: self.now, endDate: endDate)
-                                    })
-                                } else {
-                                    calendarIdentifier = createEvent(eventStore, title: assessmentNameText!, startDate: now, endDate: endDate)
-                                }
-                            }
+                    if let assessment = editingAssessment {
+                        if !assessment.addToCalendar {
+                            calendarIdentifier = setCelenderEvent.addEventToCalender(assessmentNameText!, endDate: endDate)
                         }
+                    }
                 } else {
-                        if (EKEventStore.authorizationStatus(for: .event) != EKAuthorizationStatus.authorized) {
-                            eventStore.requestAccess(to: .event, completion: {
-                                granted, error in
-                                calendarIdentifier = self.createEvent(eventStore, title: assessmentNameText!, startDate: self.now, endDate: endDate)
-                            })
-                        } else {
-                            calendarIdentifier = createEvent(eventStore, title: assessmentNameText!, startDate: now, endDate: endDate)
-                        }
+                    calendarIdentifier = setCelenderEvent.addEventToCalender(assessmentNameText!, endDate: endDate)
                 }
                 if calendarIdentifier != "" {
-                        addedToCalendar = true
+                    addedToCalendar = true
                 }
                 
-                }
-                else{
-                    if editingMode {
-                        if let assessment = editingAssessment {
-                            if assessment.addToCalendar {
-                                if (EKEventStore.authorizationStatus(for: .event) != EKAuthorizationStatus.authorized) {
-                                    eventStore.requestAccess(to: .event, completion: { (granted, error) -> Void in
-                                        eventDeleted = self.deleteEvent(eventStore, eventIdentifier: assessment.calendarIdentifier!)
-                                    })
-                                } else {
-                                    eventDeleted = deleteEvent(eventStore, eventIdentifier: assessment.calendarIdentifier!)
-                                }
-                            }
+            }else{
+                if editingMode {
+                    if let assessmentE = editingAssessment {
+                        if assessmentE.addToCalendar {
+                            eventDeleted = setCelenderEvent.deleteEventInCelender(assessment: assessmentE)
                         }
                     }
                 }
+            }
                 
-                // Handle event creation state
-                if eventDeleted {
-                    addedToCalendar = false
-                }
+            // Handle event creation state
+            if eventDeleted {
+                addedToCalendar = false
+            }
                 
             assessment.setValue(assessmentNameText, forKeyPath: "name")
             assessment.setValue(moduleNameText, forKey: "module")
@@ -268,7 +247,7 @@ class AssessmentAddViewController: UITableViewController, UIPopoverPresentationC
                 try managedContext.save()
                 assessments.append(assessment)
             } catch _ as NSError {
-                let alert = UIAlertController(title: "Error", message: "An error occured while saving the project.", preferredStyle: UIAlertController.Style.alert)
+                let alert = UIAlertController(title: "Error", message: "An error occured while saving the assessment.", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
@@ -280,7 +259,6 @@ class AssessmentAddViewController: UITableViewController, UIPopoverPresentationC
                 self.present(alert, animated: true, completion: nil)
             }
         
-        //end if upper
         // Dismiss PopOver
         dismissAddProjectPopOver()
     }
@@ -290,49 +268,8 @@ class AssessmentAddViewController: UITableViewController, UIPopoverPresentationC
         dismiss(animated: true, completion: nil)
         popoverPresentationController?.delegate?.popoverPresentationControllerDidDismissPopover?(popoverPresentationController!)
     }
+    
 
-    // MARK: - SET Event
-    
-    // Creates an event in the EKEventStore
-    func createEvent(_ eventStore: EKEventStore, title: String, startDate: Date, endDate: Date) -> String {
-        let event = EKEvent(eventStore: eventStore)
-        var identifier = ""
-        
-        event.title = title
-        event.startDate = startDate
-        event.endDate = endDate
-        event.calendar = eventStore.defaultCalendarForNewEvents
-        
-        do {
-            try eventStore.save(event, span: .thisEvent)
-            identifier = event.eventIdentifier
-        } catch {
-            let alert = UIAlertController(title: "Error", message: "Calendar event could not be created!", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
-        
-        return identifier
-    }
-    
-    // Removes an event from the EKEventStore
-    func deleteEvent(_ eventStore: EKEventStore, eventIdentifier: String) -> Bool {
-        var sucess = false
-        let eventToRemove = eventStore.event(withIdentifier: eventIdentifier)
-        if eventToRemove != nil {
-            do {
-                try eventStore.remove(eventToRemove!, span: .thisEvent)
-                sucess = true
-            } catch {
-                let alert = UIAlertController(title: "Error", message: "Calendar event could not be deleted!", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-                sucess = false
-            }
-        }
-        return sucess
-    }
-    
 }
 
 
