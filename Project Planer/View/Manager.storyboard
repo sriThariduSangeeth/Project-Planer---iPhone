@@ -307,10 +307,7 @@
                         <viewLayoutGuide key="safeArea" id="YYv-ox-9Ni"/>
                     </view>
                     <navigationItem key="navigationItem" title="Tasks" id="X3N-FZ-Mhd">
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="refresh" id="Xpo-cl-p86"/>
-                            <barButtonItem systemItem="bookmarks" id="k9j-ey-nlB"/>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="Xpo-cl-p86"/>
                     </navigationItem>
                     <connections>
                         <outlet property="ModuleNameLab" destination="Jgr-BO-bUP" id="fe6-dm-ic7"/>

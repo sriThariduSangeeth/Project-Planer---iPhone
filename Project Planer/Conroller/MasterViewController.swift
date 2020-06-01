@@ -83,10 +83,12 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         }
         
         if segue.identifier == "editAssessment" {
+            let controller = (segue.destination as! UINavigationController).topViewController as! AssessmentAddViewController
             if let indexPath = tableView.indexPathForSelectedRow {
                 let object = entityFetchedController.object(at: indexPath)
-                let controller = (segue.destination as! UINavigationController).topViewController as! AssessmentAddViewController
                 controller.editingAssessment = object as Assessment
+            }else{
+                controller.editingAssessment = sender as! Assessment
             }
         }
     }
@@ -153,10 +155,10 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
                 tableView.deleteRows(at: [indexPath!], with: .fade)
                 eventDeleted = setCelenderEvent.deleteEventInCelender(assessment: (anObject as! Assessment))            
             case .update:
-                configureCell(tableView.cellForRow(at: indexPath!)! as! AssessmentTableViewCell, withAssessment: anObject as! Assessment)
+                AssessCellSetup(tableView.cellForRow(at: indexPath!)! as! AssessmentTableViewCell, withAssessment: anObject as! Assessment)
                 editChangeDetailView(object: anObject)
             case .move:
-                configureCell(tableView.cellForRow(at: indexPath!)! as! AssessmentTableViewCell, withAssessment: anObject as! Assessment)
+                AssessCellSetup(tableView.cellForRow(at: indexPath!)! as! AssessmentTableViewCell, withAssessment: anObject as! Assessment)
                 tableView.moveRow(at: indexPath!, to: newIndexPath!)
                 // update UI
                 autoSelectTableRow()
@@ -231,7 +233,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         let cell = tableView.dequeueReusableCell(withIdentifier: "aCell", for: indexPath) as! AssessmentTableViewCell
         
         let assessment = entityFetchedController.object(at: indexPath)
-        configureCell(cell, withAssessment: assessment)
+        AssessCellSetup(cell, withAssessment: assessment)
         cell.cellDelegate = self
         let bgColorView = UIView()
         bgColorView.backgroundColor = UIColor.darkGray
@@ -248,11 +250,35 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         return true
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let context = entityFetchedController.managedObjectContext
-            context.delete(entityFetchedController.object(at: indexPath))
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let edit = editActionCell(at : indexPath)
+        let delete = deleteActionCell(at : indexPath)
+        return UISwipeActionsConfiguration(actions: [delete, edit])
+    }
+    
+    override func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
+        autoSelectTableRow()
+    }
+    
+    func editActionCell(at indexPath: IndexPath) -> UIContextualAction{
+        
+        let action = UIContextualAction(style: .normal, title: "Edit"){
+            (action,view, completion) in
+            let object = self.entityFetchedController.object(at: indexPath)
+            self.performSegue(withIdentifier: "editAssessment", sender: object)
+        }
+        action.backgroundColor = .lightGray
+        action.image = UIImage.init(named: "Edit")
+        return action
+    }
+    
+    func deleteActionCell(at indexPath: IndexPath) -> UIContextualAction{
+        let action = UIContextualAction(style: .destructive, title: "Delete"){
+            (action,view, completion) in
             
+            let context = self.entityFetchedController.managedObjectContext
+            context.delete(self.entityFetchedController.object(at: indexPath))
+
             do {
                 try context.save()
             } catch {
@@ -262,13 +288,15 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
+        action.backgroundColor = .red
+        action.image = UIImage.init(named: "Trash")
+        return action
     }
     
-    override func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
-        autoSelectTableRow()
-    }
-       
-    func configureCell(_ cell: AssessmentTableViewCell, withAssessment assessment: Assessment) {
+    
+    // MARK: - SET ASSESSMENT view CELLS
+    
+    func AssessCellSetup(_ cell: AssessmentTableViewCell, withAssessment assessment: Assessment) {
         let assessmentProgress = calculations.getProjectProgress(assessment.tasks!.allObjects as! [Task])
         cell.commonInit(assessment.name, taskProgress: CGFloat(assessmentProgress), marksVal: assessment.marks as Float, dueDate: assessment.dueDate as Date , notes: assessment.notes , value: assessment.value , addCalender: assessment.addToCalendar)
     }
