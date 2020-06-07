@@ -41,7 +41,7 @@ class LoginViewController: UIViewController{
     
     
     @IBAction func loginAction(_ sender: Any) {
-        if(userName.text == ""){
+        if(userName.text == "sangeeth"){
             navigateInsideToDashboard()
         }else{
             let alert = UIAlertController(title: "Invalid", message: "Invalid User name and Password", preferredStyle: UIAlertController.Style.alert)
@@ -65,8 +65,8 @@ class LoginViewController: UIViewController{
             UserDefaults.standard.set(self.userName.text, forKey: "userName")
             UserDefaults.standard.set(self.password.text, forKey: "pass")
 
-                self.window?.rootViewController = vc
-                self.window?.makeKeyAndVisible()
+            self.window?.rootViewController = vc
+            self.window?.makeKeyAndVisible()
 //            self.present(vc, animated: true, completion: nil)
 
         }

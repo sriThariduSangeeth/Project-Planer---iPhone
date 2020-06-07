@@ -13,10 +13,14 @@ class MyDashBoardContoller : UIViewController ,UITableViewDataSource,UITableView
     @IBOutlet weak var defCount: UILabel!
     @IBOutlet weak var tableView: UITableView!
     var defects = [Defects]()
+    var userName : String? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getDefectsList()
+        
+        userName = UserDefaults.standard.value(forKey: "userName") as! String
+        print(userName)
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }

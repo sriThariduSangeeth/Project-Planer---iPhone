@@ -48,4 +48,28 @@ class GitHubServices{
         }
     }
     
+    func getProfileDetails (_ compltion: @escaping ([GitProfile]?) -> Void){
+        var profile = [GitProfile]()
+        
+        if let repoURL = URL(string: "\(gitBaseURL!)/\("users")/\(gitUserName)"){
+            
+            if CheckInternetConnection.connection(){
+                let httpReqest = HttpAdapterService.init(url: repoURL)
+                httpReqest.downloanJSONObjectFromURL { (jsonResponse) in
+                    if let repo = jsonResponse{
+                       
+                        profile += [GitProfile(name: repo["name"] as? String ?? "non", proUrl: repo["avatar_url"] as? String ?? "non", username: repo["login"] as? String ?? "non" , email: repo["email"] as?  String ?? "non" , company: repo["company"] as? String ?? "non", repoCount: repo["public_repos"] as! Int ?? 0)]
+                        
+                                      
+                        compltion(profile)
+                    }
+                }
+            }
+            
+        }else{
+            print("somthing worng with URL")
+            compltion(nil)
+        }
+    }
+    
 }

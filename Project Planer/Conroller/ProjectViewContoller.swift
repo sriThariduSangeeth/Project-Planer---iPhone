@@ -86,17 +86,29 @@ class ProjectViewContoller : UIViewController ,UITableViewDataSource,UITableView
              Hcell.taskCount.text = "0"
         }
        
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = UIColor.darkGray
           
           // Card(cell) styles
-          Hcell.isUserInteractionEnabled = false
-          Hcell.contentView.backgroundColor = UIColor(red: 30/255, green: 30/255, blue: 30/255, alpha: 1.00)
-          Hcell.contentView.layer.cornerRadius = 10.0
-          Hcell.contentView.layer.borderWidth = 1.0
-          Hcell.contentView.layer.borderColor = UIColor(red: 0.25, green: 0.25, blue: 0.25, alpha: 1.00).cgColor
-          Hcell.contentView.layer.masksToBounds = false
+        Hcell.isUserInteractionEnabled = true
+        Hcell.contentView.backgroundColor = UIColor(red: 30/255, green: 30/255, blue: 30/255, alpha: 1.00)
+        Hcell.contentView.layer.cornerRadius = 10.0
+        Hcell.contentView.layer.borderWidth = 1.0
+        Hcell.contentView.layer.borderColor = UIColor(red: 0.25, green: 0.25, blue: 0.25, alpha: 1.00).cgColor
+        Hcell.contentView.layer.masksToBounds = false
+        Hcell.selectedBackgroundView = bgColorView
           
           return Hcell
        }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        self.performSegue(withIdentifier: "viewProjectDetails", sender: self)
+    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "viewProjectDetails" {
+            let controller = (segue.destination as! UINavigationController).topViewController as! RepositoryDetailViewController
+        }
+    }
 }

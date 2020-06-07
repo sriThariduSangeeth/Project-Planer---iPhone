@@ -135,48 +135,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "DF435798-717E-4937-A69B-FA9B81603E7E"
-            shouldBeEnabled = "Yes"
+            uuid = "79715640-E8DF-46B6-8205-54983A899775"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Project Planer/Helper/SetNotificationCelender.swift"
+            filePath = "Project Planer/Services/GitHubServices.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "scheduleLocalNotification(_:subtitle:body:date:)"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "getProfileDetails(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "108D16A0-C00A-4914-8B40-C8897F999D31"
-            shouldBeEnabled = "Yes"
+            uuid = "103977A3-A291-49F1-8BE4-BE86EEF6E608"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Project Planer/Helper/SetNotificationCelender.swift"
+            filePath = "Project Planer/Services/GitHubServices.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "scheduleLocalNotification(_:subtitle:body:date:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "9D917D1E-4A3F-4A30-89CA-98D4892A793C"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Project Planer/Helper/SetNotificationCelender.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "scheduleLocalNotification(_:subtitle:body:date:)"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "getProfileDetails(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

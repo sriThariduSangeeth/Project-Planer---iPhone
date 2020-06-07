@@ -11,6 +11,8 @@
 		272A4DBE24741F1400FA7A5A /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272A4DBD24741F1400FA7A5A /* Task+CoreDataProperties.swift */; };
 		272BC26D2484C1440016F47C /* SetCelenderEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272BC26C2484C1440016F47C /* SetCelenderEvent.swift */; };
 		272BC26F2484FF720016F47C /* SetNotificationCelender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272BC26E2484FF720016F47C /* SetNotificationCelender.swift */; };
+		272BC2712486EC670016F47C /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272BC2702486EC670016F47C /* RepositoryDetailViewController.swift */; };
+		272BC2732487C4940016F47C /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272BC2722487C4940016F47C /* UserProfileViewController.swift */; };
 		2751BA0324639D2F005327BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751BA0224639D2F005327BF /* AppDelegate.swift */; };
 		2751BA0A24639D2F005327BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2751BA0824639D2F005327BF /* Main.storyboard */; };
 		2751BA0C24639D4F005327BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2751BA0B24639D4F005327BF /* Assets.xcassets */; };
@@ -29,10 +31,10 @@
 		2751BA362463FED5005327BF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751BA352463FED5005327BF /* Constants.swift */; };
 		2751BA39246400F2005327BF /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751BA38246400F2005327BF /* Repository.swift */; };
 		2751BA3B246423B9005327BF /* GitCMServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751BA3A246423B9005327BF /* GitCMServices.swift */; };
-		2751BA3D24649187005327BF /* ProjectViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751BA3C24649187005327BF /* ProjectViewCell.swift */; };
 		2751BA3F2464970E005327BF /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751BA3E2464970E005327BF /* Project.swift */; };
 		2751BA4124649E45005327BF /* UITableView+EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751BA4024649E45005327BF /* UITableView+EmptyView.swift */; };
-		27BAA032246912B300156592 /* ProjectViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BAA031246912B300156592 /* ProjectViewCell.swift */; };
+		27B6BB07248D040E00FAC312 /* ProjectViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B6BB06248D040E00FAC312 /* ProjectViewCell.swift */; };
+		27B6BB09248D376500FAC312 /* GitProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B6BB08248D376500FAC312 /* GitProfile.swift */; };
 		27BAA034246921FD00156592 /* DefectViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BAA033246921FD00156592 /* DefectViewCell.swift */; };
 		27BAA0362469244800156592 /* Defects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BAA0352469244800156592 /* Defects.swift */; };
 		27E14126246ED4860009C792 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27E14125246ED4860009C792 /* Login.storyboard */; };
@@ -60,6 +62,8 @@
 		272A4DBD24741F1400FA7A5A /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		272BC26C2484C1440016F47C /* SetCelenderEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCelenderEvent.swift; sourceTree = "<group>"; };
 		272BC26E2484FF720016F47C /* SetNotificationCelender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNotificationCelender.swift; sourceTree = "<group>"; };
+		272BC2702486EC670016F47C /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
+		272BC2722487C4940016F47C /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		2751B9FF24639D2F005327BF /* Assessment Planer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Assessment Planer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2751BA0224639D2F005327BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2751BA0924639D2F005327BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -80,10 +84,10 @@
 		2751BA352463FED5005327BF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2751BA38246400F2005327BF /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		2751BA3A246423B9005327BF /* GitCMServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCMServices.swift; sourceTree = "<group>"; };
-		2751BA3C24649187005327BF /* ProjectViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewCell.swift; sourceTree = "<group>"; };
 		2751BA3E2464970E005327BF /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		2751BA4024649E45005327BF /* UITableView+EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+EmptyView.swift"; sourceTree = "<group>"; };
-		27BAA031246912B300156592 /* ProjectViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewCell.swift; sourceTree = "<group>"; };
+		27B6BB06248D040E00FAC312 /* ProjectViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectViewCell.swift; path = ../../../../../../.Trash/ProjectViewCell.swift; sourceTree = "<group>"; };
+		27B6BB08248D376500FAC312 /* GitProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitProfile.swift; sourceTree = "<group>"; };
 		27BAA033246921FD00156592 /* DefectViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefectViewCell.swift; sourceTree = "<group>"; };
 		27BAA0352469244800156592 /* Defects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defects.swift; sourceTree = "<group>"; };
 		27E14125246ED4860009C792 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -175,6 +179,8 @@
 				27E14149246FE8EA0009C792 /* NotesPopoverController.swift */,
 				27E1414B246FEE1D0009C792 /* TaskAddViewController.swift */,
 				27E1414D24700DF40009C792 /* AssessmentAddViewController.swift */,
+				272BC2702486EC670016F47C /* RepositoryDetailViewController.swift */,
+				272BC2722487C4940016F47C /* UserProfileViewController.swift */,
 			);
 			path = Conroller;
 			sourceTree = "<group>";
@@ -221,13 +227,13 @@
 			children = (
 				27E14144246FA4640009C792 /* DBModel */,
 				2751BA38246400F2005327BF /* Repository.swift */,
-				2751BA3C24649187005327BF /* ProjectViewCell.swift */,
 				2751BA3E2464970E005327BF /* Project.swift */,
-				27BAA031246912B300156592 /* ProjectViewCell.swift */,
 				27BAA033246921FD00156592 /* DefectViewCell.swift */,
 				27BAA0352469244800156592 /* Defects.swift */,
+				27B6BB06248D040E00FAC312 /* ProjectViewCell.swift */,
 				27E1412B246EDE920009C792 /* TaskTableViewCell.swift */,
 				27E1412D246EDF1E0009C792 /* AssessmentTableViewCell.swift */,
+				27B6BB08248D376500FAC312 /* GitProfile.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -324,23 +330,24 @@
 				272A4DBE24741F1400FA7A5A /* Task+CoreDataProperties.swift in Sources */,
 				27E1416124716B3C0009C792 /* Assessment+CoreDataClass.swift in Sources */,
 				27E1412C246EDE920009C792 /* TaskTableViewCell.swift in Sources */,
-				2751BA3D24649187005327BF /* ProjectViewCell.swift in Sources */,
 				27E14143246F55C60009C792 /* AssesmentPlaner.xcdatamodeld in Sources */,
 				2751BA2D2463D647005327BF /* UIView+HideKeyBoard.swift in Sources */,
 				2751BA4124649E45005327BF /* UITableView+EmptyView.swift in Sources */,
 				272A4DBC24741EA200FA7A5A /* Task+CoreDataClass.swift in Sources */,
 				27E14140246F4D4A0009C792 /* MasterViewController.swift in Sources */,
+				272BC2712486EC670016F47C /* RepositoryDetailViewController.swift in Sources */,
 				27E14152247101230009C792 /* Formatter.swift in Sources */,
 				27BAA034246921FD00156592 /* DefectViewCell.swift in Sources */,
 				27E141502470455B0009C792 /* LinearProgressBar.swift in Sources */,
 				27E1413E246F2F500009C792 /* CircularProgressBar.swift in Sources */,
+				27B6BB07248D040E00FAC312 /* ProjectViewCell.swift in Sources */,
 				2751BA212463A6CD005327BF /* TabViewController.swift in Sources */,
 				27E1415F24716A660009C792 /* Assessment+CoreDataProperties.swift in Sources */,
 				272BC26D2484C1440016F47C /* SetCelenderEvent.swift in Sources */,
 				27E14154247102E10009C792 /* Colours.swift in Sources */,
+				27B6BB09248D376500FAC312 /* GitProfile.swift in Sources */,
 				272BC26F2484FF720016F47C /* SetNotificationCelender.swift in Sources */,
 				27E141572471037B0009C792 /* Calculations.swift in Sources */,
-				27BAA032246912B300156592 /* ProjectViewCell.swift in Sources */,
 				2751BA302463FC97005327BF /* HttpAdapterService.swift in Sources */,
 				27E1412E246EDF1E0009C792 /* AssessmentTableViewCell.swift in Sources */,
 				2751BA3B246423B9005327BF /* GitCMServices.swift in Sources */,
@@ -353,6 +360,7 @@
 				27E1414C246FEE1D0009C792 /* TaskAddViewController.swift in Sources */,
 				2751BA0324639D2F005327BF /* AppDelegate.swift in Sources */,
 				2751BA292463C273005327BF /* LoginViewController.swift in Sources */,
+				272BC2732487C4940016F47C /* UserProfileViewController.swift in Sources */,
 				2751BA1D2463A371005327BF /* SplashView.swift in Sources */,
 				2751BA3F2464970E005327BF /* Project.swift in Sources */,
 				2751BA272463A84A005327BF /* SettingViewController.swift in Sources */,
