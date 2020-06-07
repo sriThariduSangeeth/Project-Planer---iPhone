@@ -33,6 +33,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
         
+        //When swap master view auto select first cell in table view first time
         autoSelectTableRow()
     }
     
@@ -43,6 +44,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     
     
     @IBAction func hideMaster(_ sender: UIBarButtonItem) {
+        //Hide master view button click
         self.splitViewController?.toggleMasterView()
     }
     
@@ -53,27 +55,12 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         }
     }
     
-    @objc
-    func insertNewObject(_ sender: Any) {
-        let context = self.entityFetchedController.managedObjectContext
-        do {
-            try context.save()
-        } catch {
-            let nserror = error as NSError
-            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-        }
-    }
     
     // MARK: - Segues
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showAssessmentDetails" {
-            if let indexPath = tableView.indexPathForSelectedRow {
-                let object = entityFetchedController.object(at: indexPath)
-                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-                controller.selectedAssessment = object as Assessment
-            }
-        }
+        
+        // transfer data between segue when call segue using identifier this function will automatically trigger.
         
         if segue.identifier == "addAssessment" {
             if let controller = segue.destination as? UIViewController {
@@ -91,6 +78,14 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
                 controller.editingAssessment = sender as! Assessment
             }
         }
+        
+        if segue.identifier == "showAssessmentDetails" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let object = entityFetchedController.object(at: indexPath)
+                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
+                controller.selectedAssessment = object as Assessment
+            }
+        }
     }
     
   
@@ -104,11 +99,16 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         self.managedObjectContext = context
         
         let fetchRequest: NSFetchRequest<Assessment> = Assessment.fetchRequest()
+        
+        // Set the batch size to a suitable number.
         fetchRequest.fetchBatchSize = 20
         
+        // Edit the sort key as appropriate.
         let sortDescriptor = NSSortDescriptor(key: "startDate", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
+        // Edit the section name key path and cache name if appropriate.
+        // nil for section name key path means "no sections".
         let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext!, sectionNameKeyPath: nil, cacheName: "Master")
         aFetchedResultsController.delegate = self
         _entityFetchedController = aFetchedResultsController
@@ -125,6 +125,9 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     }
     
     var _entityFetchedController: NSFetchedResultsController<Assessment>? = nil
+    
+    
+    // MARK: - below methods performance every individual changes in table view
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
@@ -179,6 +182,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     }
     
     func autoSelectTableRow() {
+        // this function will select first cell in table view and navigate to detail view
         let indexPath = IndexPath(row: 0, section: 0)
         if tableView.hasRowAtIndexPath(indexPath: indexPath as NSIndexPath) {
         
@@ -195,6 +199,8 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     }
     
     func showPopoverFrom(cell: AssessmentTableViewCell, forButton button: UIButton, forNotes notes: String) {
+        
+        // this function will open Assessment note view by clicking note view button
         let buttonFrame = button.frame
         var showRect = cell.convert(buttonFrame, to: assessmentTable)
         showRect = assessmentTable.convert(showRect, to: view)

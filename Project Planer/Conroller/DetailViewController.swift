@@ -77,19 +77,7 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
         }
     }
     
-    @objc
-    func insertNewObject(_ sender: Any) {
-        let context = self.fetchedResultsController.managedObjectContext
-        do {
-            try context.save()
-        } catch {
-            let nserror = error as NSError
-            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-        }
-    }
-    
-    
-    
+
     func setUpDetailView(){
         // Update the user interface for the detail item.
         if let assessment = selectedAssessment {
@@ -108,7 +96,7 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
             
             let tasks = (assessment.tasks!.allObjects as! [Task])
             let assessmentProgress = calculations.getProjectProgress(tasks)
-            let daysLeftProgress = calculations.getRemainingTimePercentage(assessment.startDate as Date, end: assessment.dueDate as Date)
+            let daysLeftProgress = 100 - calculations.getRemainingTimePercentage(assessment.startDate as Date, end: assessment.dueDate as Date)
             var daysRemaining = self.calculations.getDateDiff(self.now, end: assessment.dueDate as Date)
             
             if daysRemaining < 0 {
@@ -124,12 +112,13 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
             }
             
             DispatchQueue.main.async {
-                let colours = self.colours.getProgressGradient(daysLeftProgress, negative: true)
+                let colours = self.colours.getProgressGradient(daysLeftProgress , negative: false)
                 self.dayProgressBar?.customTitle = "\(daysRemaining)"
                 self.dayProgressBar?.customSubtitle = "Days Left"
                 self.dayProgressBar?.startGradientColor = colours[0]
                 self.dayProgressBar?.endGradientColor = colours[1]
                 self.dayProgressBar?.progress =  CGFloat(daysLeftProgress) / 100
+                
             }
         }
     }
@@ -139,20 +128,26 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
     // MARK: - Segues
     
     @IBAction func AddTaskBut(_ sender: UIBarButtonItem) {
+        //open add Task segue
          self.performSegue(withIdentifier: "addTask", sender: self)
      }
      
      @IBAction func EditTaskBut(_ sender: UIBarButtonItem) {
+        //open edit Task segue
         self.performSegue(withIdentifier: "editTask", sender: self)
      }
     
     @IBAction func deleteAction(_ sender: UIBarButtonItem) {
+        // configure delete part
         self.taskTable.isEditing = !self.taskTable.isEditing
         if (self.taskTable.isEditing){
             sender.title = "Done"
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // transfer data between segue when call segue using identifier this function will automatically trigger.
+        
         if segue.identifier == "addTask" {
             let controller = (segue.destination as! UINavigationController).topViewController as! TaskAddViewController
             controller.selectedAssessment = selectedAssessment
@@ -163,7 +158,6 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
         }
 
         if segue.identifier == "showProjectNotes" {
-//            animateIn(pointView: self.blurView)
             let controller = segue.destination as! NotesPopoverController
             controller.notes = selectedAssessment!.notes
             if let controller = segue.destination as? UIViewController {
@@ -203,15 +197,17 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
            fetchRequest.fetchBatchSize = 20
            
            if selectedAssessment != nil {
-               // Setting a predicate
+            // Setting a predicate
             let predicate = NSPredicate(format: "%K == %@", "assessment", selectedAssessment!)
                fetchRequest.predicate = predicate
            }
 
-           
+           // Edit the sort key as appropriate.
            let sortDescriptor = NSSortDescriptor(key: "startDate", ascending: false)
            fetchRequest.sortDescriptors = [sortDescriptor]
 
+            // Edit the section name key path and cache name if appropriate.
+            // nil for section name key path means "no sections".
            let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext!, sectionNameKeyPath: nil, cacheName: "\(UUID().uuidString)-project")
            aFetchedResultsController.delegate = self
            _fetchedResultsController = aFetchedResultsController
@@ -279,8 +275,6 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionInfo = fetchedResultsController.sections![section]
-
-//        print(self.selectionOfAssessment!)
         
         if sectionInfo.numberOfObjects == 0 {
             editTaskBut.isEnabled = false

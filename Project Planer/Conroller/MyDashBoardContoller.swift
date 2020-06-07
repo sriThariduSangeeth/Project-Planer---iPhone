@@ -17,10 +17,8 @@ class MyDashBoardContoller : UIViewController ,UITableViewDataSource,UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.userName = UserDefaults.standard.value(forKey: "userName") as! String
         getDefectsList()
-        
-        userName = UserDefaults.standard.value(forKey: "userName") as! String
-        print(userName)
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -46,7 +44,7 @@ class MyDashBoardContoller : UIViewController ,UITableViewDataSource,UITableView
     
     func getDefectsList() {
         defects = []
-        let cur = GitCMServices(UserName: "sriThariduSangeeth" )
+        let cur = GitCMServices(UserName: self.userName! )
         if CheckInternetConnection.connection(){
             cur.getDefectsList{(result) in
                 if let coun = result{

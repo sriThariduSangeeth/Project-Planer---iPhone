@@ -59,6 +59,9 @@ class SplashView: UIViewController{
         }
     }
     
+        
+    // MARK: - MOVE To LoginViewController
+    
     func removeSplashScreen() {
         splashView.removeFromSuperview()
 //        self.window = UIWindow(frame: UIScreen.main.bounds)
@@ -69,9 +72,6 @@ class SplashView: UIViewController{
                 print("Could not find view controller")
                 return
             }
-            
-//            self.window?.rootViewController = vc
-//            self.window?.makeKeyAndVisible()
             self.present(vc, animated: true, completion: nil)
         }
     }
